@@ -1,13 +1,13 @@
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\bin\Debug\netcoreapp3.1\Gunetberg.Helpers.deps.json
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\bin\Debug\netcoreapp3.1\Gunetberg.Helpers.dll
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.AssemblyInfoInputs.cache
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.AssemblyInfo.cs
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.csprojAssemblyReference.cache
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\bin\Debug\netcoreapp3.1\Gunetberg.Helpers.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\bin\Debug\netcoreapp3.1\Gunetberg.Domain.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\bin\Debug\netcoreapp3.1\Gunetberg.Extension.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\bin\Debug\netcoreapp3.1\Gunetberg.Domain.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\bin\Debug\netcoreapp3.1\Gunetberg.Extension.pdb
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.csprojAssemblyReference.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.AssemblyInfoInputs.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.AssemblyInfo.cs
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.csproj.CopyComplete
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Helpers\obj\Debug\netcoreapp3.1\Gunetberg.Helpers.pdb

@@ -7,7 +7,7 @@ namespace Gunetberg.Helpers
 {
     public class PasswordHelper
     {
-        public static Guid GetHash(string password)
+        public static Guid GetHashFromString(string password)
         {
             var stringBuilder = new StringBuilder();
 

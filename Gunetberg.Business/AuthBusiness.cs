@@ -20,7 +20,7 @@ namespace Gunetberg.Business
         public AuthDto AuthenticateUser(AuthRequestDto authRequest)
         {
             /*Validar datos*/
-            var user = _dbContext.Users.FirstOrDefault(u =>u.Email == authRequest.Email && u.Password == PasswordHelper.GetHash(authRequest.Password));
+            var user = _dbContext.Users.FirstOrDefault(u =>u.Email == authRequest.Email && u.Password == PasswordHelper.GetHashFromString(authRequest.Password));
 
             if (user == null)
             {

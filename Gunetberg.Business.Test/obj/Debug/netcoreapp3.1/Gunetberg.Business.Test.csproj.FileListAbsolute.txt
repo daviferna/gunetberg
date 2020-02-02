@@ -16,6 +16,7 @@ C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netc
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.Common.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\testhost.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\xunit.assert.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\xunit.core.dll
@@ -91,4 +92,3 @@ C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\obj\Debug\netc
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\obj\Debug\netcoreapp3.1\Gunetberg.Business.Test.csproj.CopyComplete
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\obj\Debug\netcoreapp3.1\Gunetberg.Business.Test.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\obj\Debug\netcoreapp3.1\Gunetberg.Business.Test.pdb
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business.Test\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll

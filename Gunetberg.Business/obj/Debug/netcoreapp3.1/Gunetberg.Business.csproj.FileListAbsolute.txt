@@ -3,8 +3,10 @@ C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreap
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Business.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Domain.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Extension.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Helpers.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Infrastructure.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Types.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Helpers.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Infrastructure.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Types.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Domain.pdb
@@ -15,5 +17,5 @@ C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\obj\Debug\netcoreap
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\obj\Debug\netcoreapp3.1\Gunetberg.Business.csproj.CopyComplete
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\obj\Debug\netcoreapp3.1\Gunetberg.Business.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\obj\Debug\netcoreapp3.1\Gunetberg.Business.pdb
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Helpers.dll
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Helpers.pdb
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Exceptions.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Business\bin\Debug\netcoreapp3.1\Gunetberg.Exceptions.pdb

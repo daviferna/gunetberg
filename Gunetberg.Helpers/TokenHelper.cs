@@ -24,8 +24,8 @@ namespace Gunetberg.Helpers
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateJwtSecurityToken(
-                    issuer: "http://situla.es",
-                    audience: "http://situla.es",
+                    issuer: "http://gunetberg.es",
+                    audience: "http://gunetberg.es",
                     subject: claimsIdentity,
                     notBefore: utcNow,
                     expires: utcNow.AddHours(1),

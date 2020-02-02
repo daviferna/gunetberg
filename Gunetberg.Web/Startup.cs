@@ -1,26 +1,32 @@
 using Gunetberg.Business;
+using Gunetberg.Exceptions;
 using Gunetberg.Infrastructure;
+using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Text;
 
 namespace Gunetberg.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -50,6 +56,10 @@ namespace Gunetberg.Web
                 };
             });
 
+            services.AddProblemDetails(ConfigureProblemDetails);
+
+            services.AddScoped<AuthBusiness>();
+            services.AddScoped<UserBusiness>();
             services.AddScoped<PostBusiness>();
         }
 
@@ -66,7 +76,7 @@ namespace Gunetberg.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseProblemDetails();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
@@ -99,6 +109,15 @@ namespace Gunetberg.Web
                 }
             });
 
+        }
+
+        private void ConfigureProblemDetails(ProblemDetailsOptions options)
+        {
+            options.IncludeExceptionDetails = ctx => Environment.IsDevelopment();
+            options.Map<AuthenticationRequestInvalidException>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status401Unauthorized));
+            //options.Map<Exception>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status500InternalServerError));
+            options.Map<UserException>(ex => new ExceptionProblemDetails(ex, 550));
+            
         }
     }
 }

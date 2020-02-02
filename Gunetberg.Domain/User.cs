@@ -13,6 +13,5 @@ namespace Gunetberg.Domain
         public Guid Password { get; set; }
         public Role Role { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }

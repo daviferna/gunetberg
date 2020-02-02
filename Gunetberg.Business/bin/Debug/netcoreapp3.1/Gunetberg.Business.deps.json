@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Gunetberg.Business/1.0.0": {
         "dependencies": {
+          "Gunetberg.Exceptions": "1.0.0",
           "Gunetberg.Helpers": "1.0.0",
           "Gunetberg.Infrastructure": "1.0.0",
           "Gunetberg.Types": "1.0.0"
@@ -983,6 +984,11 @@
           "Gunetberg.Domain.dll": {}
         }
       },
+      "Gunetberg.Exceptions/1.0.0": {
+        "runtime": {
+          "Gunetberg.Exceptions.dll": {}
+        }
+      },
       "Gunetberg.Extension/1.0.0": {
         "runtime": {
           "Gunetberg.Extension.dll": {}
@@ -1693,6 +1699,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Gunetberg.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Gunetberg.Exceptions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

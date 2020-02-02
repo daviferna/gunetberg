@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Gunetberg.Exceptions\Gunetberg.Exceptions.csproj" />
     <ProjectReference Include="..\Gunetberg.Helpers\Gunetberg.Helpers.csproj" />
     <ProjectReference Include="..\Gunetberg.Infrastructure\Gunetberg.Infrastructure.csproj" />
     <ProjectReference Include="..\Gunetberg.Types\Gunetberg.Types.csproj" />

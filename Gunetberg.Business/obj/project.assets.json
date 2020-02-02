@@ -1452,6 +1452,16 @@
           "bin/placeholder/Gunetberg.Domain.dll": {}
         }
       },
+      "Gunetberg.Exceptions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Gunetberg.Exceptions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Gunetberg.Exceptions.dll": {}
+        }
+      },
       "Gunetberg.Extension/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -5573,6 +5583,11 @@
       "path": "../Gunetberg.Domain/Gunetberg.Domain.csproj",
       "msbuildProject": "../Gunetberg.Domain/Gunetberg.Domain.csproj"
     },
+    "Gunetberg.Exceptions/1.0.0": {
+      "type": "project",
+      "path": "../Gunetberg.Exceptions/Gunetberg.Exceptions.csproj",
+      "msbuildProject": "../Gunetberg.Exceptions/Gunetberg.Exceptions.csproj"
+    },
     "Gunetberg.Extension/1.0.0": {
       "type": "project",
       "path": "../Gunetberg.Extension/Gunetberg.Extension.csproj",
@@ -5596,6 +5611,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Gunetberg.Exceptions >= 1.0.0",
       "Gunetberg.Helpers >= 1.0.0",
       "Gunetberg.Infrastructure >= 1.0.0",
       "Gunetberg.Types >= 1.0.0"
@@ -5634,6 +5650,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\Users\\danie\\Documents\\GitHub\\Gunetberg\\Gunetberg.Exceptions\\Gunetberg.Exceptions.csproj": {
+              "projectPath": "C:\\Users\\danie\\Documents\\GitHub\\Gunetberg\\Gunetberg.Exceptions\\Gunetberg.Exceptions.csproj"
+            },
             "C:\\Users\\danie\\Documents\\GitHub\\Gunetberg\\Gunetberg.Helpers\\Gunetberg.Helpers.csproj": {
               "projectPath": "C:\\Users\\danie\\Documents\\GitHub\\Gunetberg\\Gunetberg.Helpers\\Gunetberg.Helpers.csproj"
             },

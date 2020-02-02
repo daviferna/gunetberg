@@ -1,11 +1,11 @@
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\bin\Debug\netcoreapp3.1\Gunetberg.Domain.deps.json
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\bin\Debug\netcoreapp3.1\Gunetberg.Domain.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\bin\Debug\netcoreapp3.1\Gunetberg.Domain.pdb
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.AssemblyInfoInputs.cache
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.AssemblyInfo.cs
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.dll
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\bin\Debug\netcoreapp3.1\Gunetberg.Extension.dll
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\bin\Debug\netcoreapp3.1\Gunetberg.Extension.pdb
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.csprojAssemblyReference.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.AssemblyInfoInputs.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.AssemblyInfo.cs
 C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.csproj.CopyComplete
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Domain\obj\Debug\netcoreapp3.1\Gunetberg.Domain.pdb

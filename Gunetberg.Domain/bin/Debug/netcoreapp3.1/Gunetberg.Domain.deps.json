@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Gunetberg.Domain/1.0.0": {
+        "dependencies": {
+          "Gunetberg.Extension": "1.0.0"
+        },
+        "runtime": {
+          "Gunetberg.Domain.dll": {}
+        }
+      },
+      "Gunetberg.Extension/1.0.0": {
+        "runtime": {
+          "Gunetberg.Extension.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Gunetberg.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Gunetberg.Extension/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

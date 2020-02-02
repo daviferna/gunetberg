@@ -1,0 +1,18 @@
+S EN LOCAL
+********************
+Nueva migración
+---------------
+$env:ASPNETCORE_ENVIRONMENT='Development'
+dotnet ef migrations add <Nombre-migracion> --startup-project Gunetberg.Web
+
+Actualizar db
+--------------
+dotnet ef database update --startup-project Gunetberg.Web
+
+
+OPERACIONES PRODUCCIÓN
+
+Actualizar db
+--------------
+$env:ASPNETCORE_ENVIRONMENT='Production'
+dotnet ef database update --startup-project Gunetberg.Web

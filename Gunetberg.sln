@@ -5,13 +5,31 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Web", "Gunetberg.Web\Gunetberg.Web.csproj", "{01FBC5F5-DB6B-4285-81D7-5D026589FB42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Domain", "Gunetberg.Domain\Gunetberg.Domain.csproj", "{E758DEE4-8B4B-4568-B8FA-2DC04546C53A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Domain", "Gunetberg.Domain\Gunetberg.Domain.csproj", "{E758DEE4-8B4B-4568-B8FA-2DC04546C53A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Infrastructure", "Gunetberg.Infrastructure\Gunetberg.Infrastructure.csproj", "{9396B3EB-08E2-4A66-83D9-5D80A4403206}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Infrastructure", "Gunetberg.Infrastructure\Gunetberg.Infrastructure.csproj", "{9396B3EB-08E2-4A66-83D9-5D80A4403206}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Business", "Gunetberg.Business\Gunetberg.Business.csproj", "{F2195698-C818-4EA6-A7FA-915B781E7B77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Business", "Gunetberg.Business\Gunetberg.Business.csproj", "{F2195698-C818-4EA6-A7FA-915B781E7B77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Types", "Gunetberg.Types\Gunetberg.Types.csproj", "{5ED25BCE-E539-4843-8668-3257DCD24999}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Types", "Gunetberg.Types\Gunetberg.Types.csproj", "{5ED25BCE-E539-4843-8668-3257DCD24999}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{E6D7CDF6-E2B0-467C-B061-D1111F7C94B1}"
+	ProjectSection(SolutionItems) = preProject
+		database.txt = database.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Business.Test", "Gunetberg.Business.Test\Gunetberg.Business.Test.csproj", "{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Extension", "Gunetberg.Extension\Gunetberg.Extension.csproj", "{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Helpers", "Gunetberg.Helpers\Gunetberg.Helpers.csproj", "{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gunetberg.Exceptions", "Gunetberg.Exceptions\Gunetberg.Exceptions.csproj", "{7E39B058-169C-4BE1-BDA8-60374BEA9A63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0519CD90-08D4-4202-AD98-4D9555099D12}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +57,22 @@ Global
 		{5ED25BCE-E539-4843-8668-3257DCD24999}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ED25BCE-E539-4843-8668-3257DCD24999}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ED25BCE-E539-4843-8668-3257DCD24999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E39B058-169C-4BE1-BDA8-60374BEA9A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E39B058-169C-4BE1-BDA8-60374BEA9A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E39B058-169C-4BE1-BDA8-60374BEA9A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E39B058-169C-4BE1-BDA8-60374BEA9A63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

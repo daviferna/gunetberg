@@ -1,0 +1,15 @@
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Infrastructure.deps.json
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Infrastructure.runtimeconfig.json
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Infrastructure.runtimeconfig.dev.json
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Infrastructure.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Infrastructure.pdb
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Domain.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Domain.pdb
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\obj\Debug\netcoreapp3.1\Gunetberg.Infrastructure.csprojAssemblyReference.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\obj\Debug\netcoreapp3.1\Gunetberg.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\obj\Debug\netcoreapp3.1\Gunetberg.Infrastructure.AssemblyInfo.cs
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\obj\Debug\netcoreapp3.1\Gunetberg.Infrastructure.csproj.CopyComplete
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\obj\Debug\netcoreapp3.1\Gunetberg.Infrastructure.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\obj\Debug\netcoreapp3.1\Gunetberg.Infrastructure.pdb
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Extension.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Infrastructure\bin\Debug\netcoreapp3.1\Gunetberg.Extension.pdb

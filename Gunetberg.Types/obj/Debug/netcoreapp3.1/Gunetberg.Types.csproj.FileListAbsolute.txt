@@ -1,0 +1,8 @@
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\bin\Debug\netcoreapp3.1\Gunetberg.Types.deps.json
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\bin\Debug\netcoreapp3.1\Gunetberg.Types.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\bin\Debug\netcoreapp3.1\Gunetberg.Types.pdb
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\obj\Debug\netcoreapp3.1\Gunetberg.Types.csprojAssemblyReference.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\obj\Debug\netcoreapp3.1\Gunetberg.Types.AssemblyInfoInputs.cache
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\obj\Debug\netcoreapp3.1\Gunetberg.Types.AssemblyInfo.cs
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\obj\Debug\netcoreapp3.1\Gunetberg.Types.dll
+C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Types\obj\Debug\netcoreapp3.1\Gunetberg.Types.pdb

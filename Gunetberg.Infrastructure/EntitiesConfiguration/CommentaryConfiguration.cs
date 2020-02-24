@@ -15,6 +15,7 @@ namespace Gunetberg.Infrastructure.EntitiesConfiguration
                 .HasMaxLength(CommentaryRestrictions.ContentMaxLength)
                 .IsRequired();
             builder.Property(x => x.CreationDate).IsRequired();
+            builder.HasMany(x => x.Commentaries).WithOne(x => x.ResponseTo).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

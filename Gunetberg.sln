@@ -14,6 +14,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Types", "Gunetberg.Types\Gunetberg.Types.csproj", "{5ED25BCE-E539-4843-8668-3257DCD24999}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{E6D7CDF6-E2B0-467C-B061-D1111F7C94B1}"
+	ProjectSection(SolutionItems) = preProject
+		database.txt = database.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Business.Test", "Gunetberg.Business.Test\Gunetberg.Business.Test.csproj", "{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}"
 EndProject

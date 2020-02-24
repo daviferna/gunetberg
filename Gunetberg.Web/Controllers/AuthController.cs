@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Gunetberg.Business;
+﻿using Gunetberg.Business;
 using Gunetberg.Types;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +17,7 @@ namespace Gunetberg.Web.Controllers
 
         [Route("api/auth")]
         [HttpPost]
-        public AuthDto Auth(AuthRequestDto authRequest)
+        public AuthDto Auth([FromBody] AuthRequestDto authRequest)
         {
             return _authBusiness.AuthenticateUser(authRequest);
         }

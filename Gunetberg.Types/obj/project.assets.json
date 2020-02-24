@@ -1,11 +1,48 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Gunetberg.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Gunetberg.Extension": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Gunetberg.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Gunetberg.Domain.dll": {}
+        }
+      },
+      "Gunetberg.Extension/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Gunetberg.Extension.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Gunetberg.Extension.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Gunetberg.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Gunetberg.Domain/Gunetberg.Domain.csproj",
+      "msbuildProject": "../Gunetberg.Domain/Gunetberg.Domain.csproj"
+    },
+    "Gunetberg.Extension/1.0.0": {
+      "type": "project",
+      "path": "../Gunetberg.Extension/Gunetberg.Extension.csproj",
+      "msbuildProject": "../Gunetberg.Extension/Gunetberg.Extension.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Gunetberg.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\danie\\.nuget\\packages\\": {},
@@ -39,7 +76,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\danie\\Documents\\GitHub\\Gunetberg\\Gunetberg.Domain\\Gunetberg.Domain.csproj": {
+              "projectPath": "C:\\Users\\danie\\Documents\\GitHub\\Gunetberg\\Gunetberg.Domain\\Gunetberg.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

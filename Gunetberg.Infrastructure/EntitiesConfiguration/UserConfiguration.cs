@@ -27,7 +27,6 @@ namespace Gunetberg.Infrastructure.EntitiesConfiguration
                 .IsUnique()
                 .HasName("Alias_Index");
             builder.Property(x => x.Password)
-                .HasMaxLength(UserRestrictions.PasswordMaxLength)
                 .IsRequired();
             builder.Property(x => x.CreationDate).IsRequired();
             builder.Property(x => x.Role).HasConversion<string>();

@@ -19,10 +19,12 @@ namespace Gunetberg.Infrastructure
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new PostConfiguration());
             modelBuilder.ApplyConfiguration(new SectionConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentaryConfiguration());
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Section> Section { get; set; }
+        public DbSet<Commentary> Commentaries { get; set; }
     }
 }

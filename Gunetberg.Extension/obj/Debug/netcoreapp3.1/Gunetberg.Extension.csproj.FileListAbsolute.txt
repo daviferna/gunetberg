@@ -1,8 +1,0 @@
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\bin\Debug\netcoreapp3.1\Gunetberg.Extension.deps.json
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\bin\Debug\netcoreapp3.1\Gunetberg.Extension.dll
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\bin\Debug\netcoreapp3.1\Gunetberg.Extension.pdb
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\obj\Debug\netcoreapp3.1\Gunetberg.Extension.csprojAssemblyReference.cache
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\obj\Debug\netcoreapp3.1\Gunetberg.Extension.AssemblyInfoInputs.cache
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\obj\Debug\netcoreapp3.1\Gunetberg.Extension.AssemblyInfo.cs
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\obj\Debug\netcoreapp3.1\Gunetberg.Extension.dll
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Extension\obj\Debug\netcoreapp3.1\Gunetberg.Extension.pdb

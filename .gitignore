@@ -1,1 +1,6 @@
-.vs
+.vs/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+*.txt
+[Bb]in\Debug\netcoreapp3.1

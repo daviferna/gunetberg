@@ -10,6 +10,6 @@ namespace Gunetberg.Domain
         public DateTime CreationDate { get; set; }
         public SectionType Type { get; set; }
         public string Content { get; set; }
-        public Post Post { get; set; }
+        public virtual Post Post { get; set; }
     }
 }

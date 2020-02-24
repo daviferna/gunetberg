@@ -1,8 +1,0 @@
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\bin\Debug\netcoreapp3.1\Gunetberg.Exceptions.deps.json
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\bin\Debug\netcoreapp3.1\Gunetberg.Exceptions.dll
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\bin\Debug\netcoreapp3.1\Gunetberg.Exceptions.pdb
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\obj\Debug\netcoreapp3.1\Gunetberg.Exceptions.csprojAssemblyReference.cache
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\obj\Debug\netcoreapp3.1\Gunetberg.Exceptions.AssemblyInfoInputs.cache
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\obj\Debug\netcoreapp3.1\Gunetberg.Exceptions.AssemblyInfo.cs
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\obj\Debug\netcoreapp3.1\Gunetberg.Exceptions.dll
-C:\Users\danie\Documents\GitHub\Gunetberg\Gunetberg.Exceptions\obj\Debug\netcoreapp3.1\Gunetberg.Exceptions.pdb

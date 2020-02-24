@@ -6,6 +6,7 @@ using Gunetberg.Helpers;
 using Gunetberg.Infrastructure;
 using Gunetberg.Types.User;
 using System;
+using System.Linq;
 
 namespace Gunetberg.Business
 {
@@ -18,9 +19,13 @@ namespace Gunetberg.Business
             _dbContext = dbContext;
         }
 
-        public long CreateUser(UserCreationDto newUser)
+        public UserCreationResultDto CreateUser(UserCreationDto newUser)
         {
             #region validation
+            if(newUser == null)
+            {
+                throw new UserException(UserError.RequestIsEmpty);
+            }
             if (newUser.Email.IsNullOrWhitespace()) 
             {
                 throw new UserException(UserError.EmailIsNullOrWhitespace);
@@ -49,6 +54,14 @@ namespace Gunetberg.Business
             {
                 throw new UserException(UserError.PasswordMaxLengthExceeded);
             }
+            if(_dbContext.Users.FirstOrDefault(x=>x.Email == newUser.Email) != null)
+            {
+                throw new UserException(UserError.EmailAlreadyExists);
+            }
+            if (_dbContext.Users.FirstOrDefault(x => x.Alias == newUser.Alias) != null)
+            {
+                throw new UserException(UserError.AliasAlreadyExists);
+            }
             #endregion
 
             //Create
@@ -62,13 +75,33 @@ namespace Gunetberg.Business
             };
 
             _dbContext.Users.Add(user);
-            
+
             if(_dbContext.SaveChanges()!= 1)
             {
                 throw new UserException(UserError.NotCreated);
             }
 
-            return user.UserId;
+            return new UserCreationResultDto
+            {
+                UserId = user.UserId
+            };
+        }
+    
+        public UserDetail GetUser(long userId)
+        {
+            var user = _dbContext.Users.Where(x => x.UserId == userId).Select(x => new UserDetail
+            {
+                Alias = x.Alias,
+                Email = x.Email
+            }).FirstOrDefault();
+
+            if (user == null)
+            {
+                throw new UserException(UserError.DoesNotExist);
+            }
+
+            return user;
+
         }
     }
 }

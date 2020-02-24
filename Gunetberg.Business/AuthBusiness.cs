@@ -1,10 +1,8 @@
-﻿using Gunetberg.Helpers;
+﻿using Gunetberg.Exceptions;
+using Gunetberg.Helpers;
 using Gunetberg.Infrastructure;
 using Gunetberg.Types;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Gunetberg.Business
 {
@@ -24,7 +22,7 @@ namespace Gunetberg.Business
 
             if (user == null)
             {
-                throw new Exception();
+                throw new AuthenticationInvalidException();
             }
             return new AuthDto { Token = TokenHelper.GenerateToken(user.UserId, user.Role) };
         }

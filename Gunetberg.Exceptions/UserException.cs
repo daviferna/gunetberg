@@ -14,13 +14,17 @@ namespace Gunetberg.Exceptions
 
     public enum UserError
     {
+        RequestIsEmpty,
         EmailIsNullOrWhitespace,
         EmailIsNotValid,
         EmailMaxLengthExceeded,
+        EmailAlreadyExists,
         AliasIsNullOrWhitespace,
         AliasMaxLengthExceeded,
+        AliasAlreadyExists,
         PasswordIsNullOrWhitespace,
         PasswordMaxLengthExceeded,
-        NotCreated
+        NotCreated,
+        DoesNotExist
     }
 }

@@ -10,7 +10,7 @@ namespace Gunetberg.Domain
         public string Email { get; set; }
         public string Alias { get; set; }
         public DateTime CreationDate { get; set; }
-        public Guid Password { get; set; }
+        public string Password { get; set; }
         public Role Role { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
     }

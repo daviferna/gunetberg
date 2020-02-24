@@ -1,20 +1,26 @@
-﻿using Gunetberg.Extension;
+﻿using Gunetberg.Cloud;
+using Gunetberg.Domain;
+using Gunetberg.Domain.Restrictions;
+using Gunetberg.Exceptions;
+using Gunetberg.Extension;
 using Gunetberg.Infrastructure;
 using Gunetberg.Types;
+using Gunetberg.Types.Post;
+using Gunetberg.Types.Section;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Gunetberg.Business
 {
     public class PostBusiness
     {
         private readonly Context _dbContext;
+        private readonly BlobStorage _blobStorage;
 
-        public PostBusiness(Context dbContext)
+        public PostBusiness(Context dbContext, BlobStorage blobStorage)
         {
             _dbContext = dbContext;
+            _blobStorage = blobStorage;
         }
 
         public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int itemsPerPage)
@@ -66,6 +72,7 @@ namespace Gunetberg.Business
                  {
                      PostId = x.PostId,
                      Title = x.Title,
+                     HeaderImage = x.HeaderImage,
                      CreationDate = x.CreationDate,
                      AuthorAlias = x.Author.Alias
                  }).ToList();
@@ -74,6 +81,75 @@ namespace Gunetberg.Business
             return result;
         }
 
+        public CompletePostDto GetPost(long postId)
+        {
+            var post = _dbContext.Posts
+                                 .Select(x =>
+                                     new CompletePostDto
+                                     {
+                                         PostId = x.PostId,
+                                         AuthorAlias = x.Author.Alias,
+                                         HeaderImage = x.HeaderImage,
+                                         CreationDate = x.CreationDate,
+                                         Title = x.Title,
+                                         Sections = x.Sections.Select(y => new SectionDto
+                                         {
+                                             SectionId = y.SectionId,
+                                             CreationDate = y.CreationDate,
+                                             Content = y.Content,
+                                             Type = y.Type
+                                         }).ToList()
+                                     })
+                                 .FirstOrDefault(x => x.PostId == postId);
 
+            if (post == null)
+            {
+                throw new PostException(PostError.PostIdDoesNotExist);
+            }
+
+            return post;
+        }
+
+        public PostCreationResultDto CreatePost(PostCreationDto newPost, long userId)
+        {
+            if (newPost == null)
+            {
+                throw new PostException(PostError.RequestIsEmpty);
+            }
+            if (newPost.Title.IsNullOrWhitespace())
+            {
+                throw new PostException(PostError.TitleIsNullOrWhitespace);
+            }
+            if (newPost.Title.Length > PostRestrictions.TitleMaxLength)
+            {
+                throw new PostException(PostError.TitleMaxLengthExceeded);
+            }
+
+            var utcNow = DateTime.UtcNow;
+            var user = _dbContext.Users.FirstOrDefault(x => x.UserId == userId);
+            var sections = newPost.Sections?.Select(x => new Section {
+                Type = (SectionType)x.SectionType, 
+                Content = x.Content, 
+                CreationDate = utcNow
+            }).ToList();
+            var post = new Post
+            {
+                Title = newPost.Title,
+                CreationDate = DateTime.UtcNow,
+                Author = user,
+                Sections = sections,
+                HeaderImage = newPost.HeaderImage                
+            };
+
+            _dbContext.Posts.Add(post);
+
+            _dbContext.SaveChanges();
+
+            return new PostCreationResultDto
+            {
+                PostId = post.PostId
+            };
+        }
+   
     }
 }

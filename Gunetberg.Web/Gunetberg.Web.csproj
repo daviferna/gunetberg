@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gunetberg.Business\Gunetberg.Business.csproj" />
+    <ProjectReference Include="..\Gunetberg.Cloud\Gunetberg.Cloud.csproj" />
     <ProjectReference Include="..\Gunetberg.Infrastructure\Gunetberg.Infrastructure.csproj" />
   </ItemGroup>
 

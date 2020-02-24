@@ -1,4 +1,5 @@
 using Gunetberg.Business;
+using Gunetberg.Cloud;
 using Gunetberg.Exceptions;
 using Gunetberg.Infrastructure;
 using Hellang.Middleware.ProblemDetails;
@@ -58,6 +59,7 @@ namespace Gunetberg.Web
 
             services.AddProblemDetails(ConfigureProblemDetails);
 
+            services.AddScoped<BlobStorage>(x=> new BlobStorage(Configuration.GetConnectionString("StorageAccount"), Configuration.GetConnectionString("ImageContainer")));
             services.AddScoped<AuthBusiness>();
             services.AddScoped<UserBusiness>();
             services.AddScoped<PostBusiness>();
@@ -114,10 +116,11 @@ namespace Gunetberg.Web
         private void ConfigureProblemDetails(ProblemDetailsOptions options)
         {
             options.IncludeExceptionDetails = ctx => Environment.IsDevelopment();
-            options.Map<AuthenticationRequestInvalidException>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status401Unauthorized));
-            //options.Map<Exception>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status500InternalServerError));
+            options.Map<AuthenticationInvalidException>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status401Unauthorized));
             options.Map<UserException>(ex => new ExceptionProblemDetails(ex, 550));
-            
+            options.Map<PostException>(ex => new ExceptionProblemDetails(ex, 551));
+            options.Map<Exception>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status500InternalServerError));
+
         }
     }
 }

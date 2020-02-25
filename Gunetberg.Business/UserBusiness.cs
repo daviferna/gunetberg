@@ -4,6 +4,7 @@ using Gunetberg.Exceptions;
 using Gunetberg.Extension;
 using Gunetberg.Helpers;
 using Gunetberg.Infrastructure;
+using Gunetberg.Types;
 using Gunetberg.Types.User;
 using System;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Gunetberg.Business
             _dbContext = dbContext;
         }
 
-        public UserCreationResultDto CreateUser(UserCreationDto newUser)
+        public CreationResultDto<long> CreateUser(UserCreationDto newUser)
         {
             #region validation
             if(newUser == null)
@@ -81,9 +82,9 @@ namespace Gunetberg.Business
                 throw new UserException(UserError.NotCreated);
             }
 
-            return new UserCreationResultDto
+            return new CreationResultDto<long>
             {
-                UserId = user.UserId
+                Id = user.UserId
             };
         }
     

@@ -110,7 +110,7 @@ namespace Gunetberg.Business
             return post;
         }
 
-        public PostCreationResultDto CreatePost(PostCreationDto newPost, long userId)
+        public CreationResultDto<long> CreatePost(PostCreationDto newPost, long userId)
         {
             if (newPost == null)
             {
@@ -145,9 +145,9 @@ namespace Gunetberg.Business
 
             _dbContext.SaveChanges();
 
-            return new PostCreationResultDto
+            return new CreationResultDto<long>
             {
-                PostId = post.PostId
+                Id = post.PostId
             };
         }
    

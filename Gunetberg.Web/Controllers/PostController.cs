@@ -36,7 +36,7 @@ namespace Gunetberg.Web.Controllers
         [Route("create")]
         [Authorize(Roles = "User")]
         [HttpPost]
-        public PostCreationResultDto CreatePost(PostCreationDto newPost)
+        public CreationResultDto<long> CreatePost(PostCreationDto newPost)
         {
             return _postBusiness.CreatePost(newPost, UserId);
         }

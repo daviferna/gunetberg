@@ -1,4 +1,5 @@
 ﻿using Gunetberg.Business;
+using Gunetberg.Types;
 using Gunetberg.Types.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace Gunetberg.Web.Controllers
 
         [Route("create")]
         [HttpPost]
-        public UserCreationResultDto CreateUser(UserCreationDto newUser)
+        public CreationResultDto<long> CreateUser(UserCreationDto newUser)
         {
             return _userBusiness.CreateUser(newUser);
         }

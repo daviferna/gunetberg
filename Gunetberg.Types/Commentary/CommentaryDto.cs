@@ -9,7 +9,6 @@ namespace Gunetberg.Types.Commentary
         public long CommentaryId { get; set; }
         public string Content { get; set; }
         public DateTime CreationDate { get; set; }
-
-        public PFOCollection<CommentaryDto> Responses { get; set; }
+        public bool HasAnyResponse { get; set; }
     }
 }

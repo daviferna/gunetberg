@@ -30,7 +30,7 @@ namespace Gunetberg.Business
             var posts = _dbContext.Posts.AsQueryable();
 
             #region filter
-            if (!title.IsNullOrWhitespace())
+            if (!string.IsNullOrWhiteSpace(title))
             {
                 posts = posts.Where(x => x.Title.Contains(title));
             }
@@ -104,7 +104,7 @@ namespace Gunetberg.Business
 
             if (post == null)
             {
-                throw new PostException(PostError.PostIdDoesNotExist);
+                throw new PostException(PostError.PostDoesNotExist);
             }
 
             return post;
@@ -116,7 +116,7 @@ namespace Gunetberg.Business
             {
                 throw new PostException(PostError.RequestIsEmpty);
             }
-            if (newPost.Title.IsNullOrWhitespace())
+            if (string.IsNullOrWhiteSpace(newPost.Title))
             {
                 throw new PostException(PostError.TitleIsNullOrWhitespace);
             }
@@ -127,6 +127,12 @@ namespace Gunetberg.Business
 
             var utcNow = DateTime.UtcNow;
             var user = _dbContext.Users.FirstOrDefault(x => x.UserId == userId);
+
+            if(user == null)
+            {
+                throw new UserException(UserError.DoesNotExist);
+            }
+
             var sections = newPost.Sections?.Select(x => new Section {
                 Type = (SectionType)x.SectionType, 
                 Content = x.Content, 

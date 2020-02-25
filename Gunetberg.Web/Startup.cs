@@ -63,6 +63,7 @@ namespace Gunetberg.Web
             services.AddScoped<AuthBusiness>();
             services.AddScoped<UserBusiness>();
             services.AddScoped<PostBusiness>();
+            services.AddScoped<CommentaryBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -119,6 +120,7 @@ namespace Gunetberg.Web
             options.Map<AuthenticationInvalidException>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status401Unauthorized));
             options.Map<UserException>(ex => new ExceptionProblemDetails(ex, 550));
             options.Map<PostException>(ex => new ExceptionProblemDetails(ex, 551));
+            options.Map<CommentaryException>(ex => new ExceptionProblemDetails(ex, 552));
             options.Map<Exception>(ex => new ExceptionProblemDetails(ex, StatusCodes.Status500InternalServerError));
 
         }

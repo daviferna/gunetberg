@@ -27,7 +27,7 @@ namespace Gunetberg.Business
             {
                 throw new UserException(UserError.RequestIsEmpty);
             }
-            if (newUser.Email.IsNullOrWhitespace()) 
+            if (string.IsNullOrWhiteSpace(newUser.Email)) 
             {
                 throw new UserException(UserError.EmailIsNullOrWhitespace);
             }
@@ -39,7 +39,7 @@ namespace Gunetberg.Business
             {
                 throw new UserException(UserError.EmailMaxLengthExceeded);
             }
-            if (newUser.Alias.IsNullOrWhitespace())
+            if (string.IsNullOrWhiteSpace(newUser.Alias))
             {
                 throw new UserException(UserError.AliasIsNullOrWhitespace);
             }
@@ -47,7 +47,7 @@ namespace Gunetberg.Business
             {
                 throw new UserException(UserError.AliasMaxLengthExceeded);
             }
-            if (newUser.Password.IsNullOrWhitespace())
+            if (string.IsNullOrWhiteSpace(newUser.Password))
             {
                 throw new UserException(UserError.PasswordIsNullOrWhitespace);
             }

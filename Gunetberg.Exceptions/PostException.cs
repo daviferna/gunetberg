@@ -14,7 +14,7 @@ namespace Gunetberg.Exceptions
     public enum PostError
     {
         RequestIsEmpty,
-        PostIdDoesNotExist,
+        PostDoesNotExist,
         TitleIsNullOrWhitespace,
         TitleMaxLengthExceeded
     }

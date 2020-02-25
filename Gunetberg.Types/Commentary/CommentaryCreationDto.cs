@@ -7,6 +7,7 @@ namespace Gunetberg.Types.Commentary
     public class CommentaryCreationDto
     {
         public string Content { get; set; }
-        public long ResponseTo { get; set; }
+        public long? ResponseTo { get; set; }
+        public long PostId { get; set; }
     }
 }

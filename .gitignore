@@ -6,4 +6,5 @@
 [Rr]elease/
 *.txt
 [Bb]in\Debug\netcoreapp3.1
-.csproj.user
+*.csproj.user
+appsettings*

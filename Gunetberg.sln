@@ -20,8 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{E6D7CD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Business.Test", "Gunetberg.Business.Test\Gunetberg.Business.Test.csproj", "{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Extension", "Gunetberg.Extension\Gunetberg.Extension.csproj", "{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Helpers", "Gunetberg.Helpers\Gunetberg.Helpers.csproj", "{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Exceptions", "Gunetberg.Exceptions\Gunetberg.Exceptions.csproj", "{7E39B058-169C-4BE1-BDA8-60374BEA9A63}"
@@ -32,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Cloud", "Gunetberg.Cloud\Gunetberg.Cloud.csproj", "{A7DF2D0A-8B3D-4CA3-B107-12A0CA15B878}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Extension", "Gunetberg.Extension\Gunetberg.Extension.csproj", "{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,10 +63,6 @@ Global
 		{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C8CCF5C-35BD-4BB0-A24F-648B814C9668}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BB3EF2D-8EAA-4900-A405-44D1F2D7A0F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ACB76A4-84F6-4ED1-9CCA-041E7F37FF48}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,6 +75,10 @@ Global
 		{A7DF2D0A-8B3D-4CA3-B107-12A0CA15B878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7DF2D0A-8B3D-4CA3-B107-12A0CA15B878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7DF2D0A-8B3D-4CA3-B107-12A0CA15B878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using Gunetberg.Domain;
+﻿using Gunetberg.Cloud;
+using Gunetberg.Domain;
 using Gunetberg.Domain.Restrictions;
 using Gunetberg.Exceptions;
 using Gunetberg.Extension;
@@ -8,26 +9,29 @@ using Gunetberg.Types;
 using Gunetberg.Types.User;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Gunetberg.Business
 {
     public class UserBusiness
     {
         private readonly Context _dbContext;
+        private readonly BlobStorage _blobStorage;
 
-        public UserBusiness(Context dbContext)
+        public UserBusiness(Context dbContext, BlobStorage blobStorage)
         {
             _dbContext = dbContext;
+            _blobStorage = blobStorage;
         }
 
         public CreationResultDto<long> CreateUser(UserCreationDto newUser)
         {
             #region validation
-            if(newUser == null)
+            if (newUser == null)
             {
                 throw new UserException(UserError.RequestIsEmpty);
             }
-            if (string.IsNullOrWhiteSpace(newUser.Email)) 
+            if (string.IsNullOrWhiteSpace(newUser.Email))
             {
                 throw new UserException(UserError.EmailIsNullOrWhitespace);
             }
@@ -35,7 +39,7 @@ namespace Gunetberg.Business
             {
                 throw new UserException(UserError.EmailIsNotValid);
             }
-            if(newUser.Email.Length > UserRestrictions.EmailMaxLength)
+            if (newUser.Email.Length > UserRestrictions.EmailMaxLength)
             {
                 throw new UserException(UserError.EmailMaxLengthExceeded);
             }
@@ -55,7 +59,7 @@ namespace Gunetberg.Business
             {
                 throw new UserException(UserError.PasswordMaxLengthExceeded);
             }
-            if(_dbContext.Users.FirstOrDefault(x=>x.Email == newUser.Email) != null)
+            if (_dbContext.Users.FirstOrDefault(x => x.Email == newUser.Email) != null)
             {
                 throw new UserException(UserError.EmailAlreadyExists);
             }
@@ -77,7 +81,7 @@ namespace Gunetberg.Business
 
             _dbContext.Users.Add(user);
 
-            if(_dbContext.SaveChanges()!= 1)
+            if (_dbContext.SaveChanges() != 1)
             {
                 throw new UserException(UserError.NotCreated);
             }
@@ -87,13 +91,15 @@ namespace Gunetberg.Business
                 Id = user.UserId
             };
         }
-    
+
         public UserDetail GetUser(long userId)
         {
             var user = _dbContext.Users.Where(x => x.UserId == userId).Select(x => new UserDetail
             {
                 Alias = x.Alias,
-                Email = x.Email
+                Email = x.Email,
+                UserId = x.UserId,
+                ProfilePicture = x.ProfilePicture.HasValue? $"https://gunetbergstorage.blob.core.windows.net/profilepictures/{x.ProfilePicture}.png" : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
             }).FirstOrDefault();
 
             if (user == null)
@@ -103,6 +109,50 @@ namespace Gunetberg.Business
 
             return user;
 
+        }
+
+        public async Task<CreationResultDto<string>> UpdateProfilePicture(long userId, UserUpdateProfilePicture userUpdateProfilePhoto)
+        {
+
+            if (string.IsNullOrWhiteSpace(userUpdateProfilePhoto.ProfilePicture))
+            {
+                throw new UserException(UserError.ProfilePhotoIsEmpty);
+            }
+
+            var user = _dbContext.Users.FirstOrDefault(x => x.UserId == userId);
+            if (user == null)
+            {
+                throw new UserException(UserError.DoesNotExist);
+            }
+            user.ProfilePicture = Guid.NewGuid();
+
+            var profilePhoto = Convert.FromBase64String(userUpdateProfilePhoto.ProfilePicture);
+                     
+            await _blobStorage.Upload(profilePhoto, $"{user.ProfilePicture}.png");
+
+            _dbContext.SaveChanges();
+          
+            return new CreationResultDto<string>
+            {
+                Id = $"https://gunetbergstorage.blob.core.windows.net/profilepictures/{user.ProfilePicture}.png"
+            };
+        }
+
+        public UserSummary GetUserSummary(long userId)
+        {
+            var userSummary = _dbContext.Users.Where(x => x.UserId == userId).Select(x => new UserSummary
+            {
+                CreationDate = x.CreationDate.ToUniversalTime(),
+                PostCount = x.Posts.Count,
+                CommentaryCount = x.Commentaries.Count
+            }).FirstOrDefault();
+
+            if (userSummary == null)
+            {
+                throw new UserException(UserError.DoesNotExist);
+            }
+
+            return userSummary;
         }
     }
 }

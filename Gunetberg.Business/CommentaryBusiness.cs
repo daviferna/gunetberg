@@ -4,6 +4,7 @@ using Gunetberg.Exceptions;
 using Gunetberg.Infrastructure;
 using Gunetberg.Types;
 using Gunetberg.Types.Commentary;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -12,17 +13,19 @@ namespace Gunetberg.Business
     public class CommentaryBusiness
     {
         private readonly Context _dbContext;
+        private readonly NotificationBusiness _notificationBusiness;
 
-        public CommentaryBusiness(Context dbContext)
+        public CommentaryBusiness(Context dbContext, NotificationBusiness notificationBusiness)
         {
             _dbContext = dbContext;
+            _notificationBusiness = notificationBusiness;
         }
 
         public PFOCollection<CommentaryDto> GetCommentaries(long postId, int page, int itemsPerPage, long? commentaryId = null)
         {
             var result = new PFOCollection<CommentaryDto>();
 
-            var commentaries = _dbContext.Commentaries.Where(x => x.Post.PostId == postId).AsQueryable();
+            var commentaries = _dbContext.Commentaries.Where(x => x.Post.PostId == postId).OrderByDescending(x=>x.CreationDate).AsQueryable();
 
             if (!commentaries.Any())
             {
@@ -49,8 +52,11 @@ namespace Gunetberg.Business
                  {
                      CommentaryId = x.CommentaryId,
                      Content = x.Content,
-                     CreationDate = x.CreationDate,
-                     HasAnyResponse = _dbContext.Commentaries.Any(y => y.Post.PostId == postId && y.ResponseTo.CommentaryId == x.CommentaryId)
+                     CreationDate = x.CreationDate.ToUniversalTime(),
+                     Author = x.Author.Alias,
+                     AuthorId = x.Author.UserId,
+                     HasAnyResponse = _dbContext.Commentaries.Any(y => y.Post.PostId == postId && y.ResponseTo.CommentaryId == x.CommentaryId),
+                     ProfilePicture = x.Author.ProfilePicture.HasValue ? $"https://gunetbergstorage.blob.core.windows.net/profilepictures/{x.Author.ProfilePicture}.png" : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                  }).ToList();
             #endregion
 
@@ -79,11 +85,12 @@ namespace Gunetberg.Business
                 throw new UserException(UserError.DoesNotExist);
             }
 
-            var post = _dbContext.Posts.FirstOrDefault(x => x.PostId == newCommentary.PostId);
+            var post = _dbContext.Posts.Include(x=>x.Author).FirstOrDefault(x => x.PostId == newCommentary.PostId);
+
 
             if (post == null)
             {
-                throw new PostException(PostError.PostDoesNotExist);
+                throw new PostException(PostError.PostNotFound);
             }
 
             //Create
@@ -106,6 +113,10 @@ namespace Gunetberg.Business
 
             _dbContext.Commentaries.Add(commentary);
             _dbContext.SaveChanges();
+
+            //Crear notificación
+            _notificationBusiness.CreateNotification(NotificationKind.Commentary, post.Author.UserId);
+
 
             return new CreationResultDto<long>
             {

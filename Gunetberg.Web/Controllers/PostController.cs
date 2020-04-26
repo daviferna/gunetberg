@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.IO;
 using Gunetberg.Business;
 using Gunetberg.Types;
 using Gunetberg.Types.Post;
@@ -39,6 +39,14 @@ namespace Gunetberg.Web.Controllers
         public CreationResultDto<long> CreatePost(PostCreationDto newPost)
         {
             return _postBusiness.CreatePost(newPost, UserId);
+        }
+
+        [Route("download")]
+        [HttpGet]
+        public FileResult DownloadPost(long postId)
+        {
+            var stream = new MemoryStream(_postBusiness.DownloadPost(postId));
+            return File(stream, "application/pdf", "post.pdf");
         }
     }
 }

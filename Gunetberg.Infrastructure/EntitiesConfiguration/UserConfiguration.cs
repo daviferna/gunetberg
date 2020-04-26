@@ -33,6 +33,14 @@ namespace Gunetberg.Infrastructure.EntitiesConfiguration
             builder.HasMany(x => x.Posts)
                 .WithOne(x => x.Author)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(x => x.Notifications)
+                .WithOne(x => x.User)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(x => x.Commentaries)
+                .WithOne(x => x.Author)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

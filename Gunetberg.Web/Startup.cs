@@ -32,6 +32,8 @@ namespace Gunetberg.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -59,10 +61,11 @@ namespace Gunetberg.Web
 
             services.AddProblemDetails(ConfigureProblemDetails);
 
-            services.AddScoped<BlobStorage>(x=> new BlobStorage(Configuration.GetConnectionString("StorageAccount"), Configuration.GetConnectionString("ImageContainer")));
+            services.AddScoped<BlobStorage>(x=> new BlobStorage(Configuration.GetConnectionString("StorageAccount"), Configuration.GetConnectionString("ProfilePictureContainer")));
             services.AddScoped<AuthBusiness>();
             services.AddScoped<UserBusiness>();
             services.AddScoped<PostBusiness>();
+            services.AddScoped<NotificationBusiness>();
             services.AddScoped<CommentaryBusiness>();
         }
 

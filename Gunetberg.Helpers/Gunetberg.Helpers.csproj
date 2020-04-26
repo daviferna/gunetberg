@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="PDFsharpNetStandard2" Version="1.51.4845" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Gunetberg.Domain\Gunetberg.Domain.csproj" />
+    <ProjectReference Include="..\Gunetberg.Resources\Gunetberg.Resources.csproj" />
   </ItemGroup>
 
 </Project>

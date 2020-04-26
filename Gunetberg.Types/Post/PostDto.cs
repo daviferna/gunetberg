@@ -11,5 +11,6 @@ namespace Gunetberg.Types.Post
         public string HeaderImage { get; set; }
         public DateTime CreationDate { get; set; }
         public string AuthorAlias { get; set; }
+        public string Description { get; set; }
     }
 }

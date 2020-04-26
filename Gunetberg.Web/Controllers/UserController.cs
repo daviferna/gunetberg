@@ -3,6 +3,7 @@ using Gunetberg.Types;
 using Gunetberg.Types.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Gunetberg.Web.Controllers
 {
@@ -30,6 +31,23 @@ namespace Gunetberg.Web.Controllers
         public UserDetail GetUser()
         {
             return _userBusiness.GetUser(UserId);
+        }
+    
+        
+        [Route("updateprofilepicture")]
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        public async Task<CreationResultDto<string>> UpdateProfilePicture(UserUpdateProfilePicture userUpdateProfilePicture)
+        {
+           return await _userBusiness.UpdateProfilePicture(UserId, userUpdateProfilePicture);
+        }
+
+        [Route("summary")]
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public UserSummary GetUserSummary()
+        {
+            return _userBusiness.GetUserSummary(UserId);
         }
     }
 }

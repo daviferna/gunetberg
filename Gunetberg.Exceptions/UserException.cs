@@ -25,6 +25,7 @@ namespace Gunetberg.Exceptions
         PasswordIsNullOrWhitespace,
         PasswordMaxLengthExceeded,
         NotCreated,
-        DoesNotExist
+        DoesNotExist,
+        ProfilePhotoIsEmpty
     }
 }

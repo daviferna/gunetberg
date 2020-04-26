@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gunetberg.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200224234520_Initial")]
-    partial class Initial
+    [Migration("20200319190220_ProfilePicture-To-User")]
+    partial class ProfilePictureToUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,6 +54,31 @@ namespace Gunetberg.Infrastructure.Migrations
                     b.HasIndex("ResponseToCommentaryId");
 
                     b.ToTable("Commentaries");
+                });
+
+            modelBuilder.Entity("Gunetberg.Domain.Notification", b =>
+                {
+                    b.Property<long>("NotificationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CommitedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("NotificationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Gunetberg.Domain.Post", b =>
@@ -136,6 +161,9 @@ namespace Gunetberg.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("ProfilePicture")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -156,8 +184,9 @@ namespace Gunetberg.Infrastructure.Migrations
             modelBuilder.Entity("Gunetberg.Domain.Commentary", b =>
                 {
                     b.HasOne("Gunetberg.Domain.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorUserId");
+                        .WithMany("Commentaries")
+                        .HasForeignKey("AuthorUserId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("Gunetberg.Domain.Post", "Post")
                         .WithMany("Commentaries")
@@ -168,6 +197,14 @@ namespace Gunetberg.Infrastructure.Migrations
                         .WithMany("Commentaries")
                         .HasForeignKey("ResponseToCommentaryId")
                         .OnDelete(DeleteBehavior.NoAction);
+                });
+
+            modelBuilder.Entity("Gunetberg.Domain.Notification", b =>
+                {
+                    b.HasOne("Gunetberg.Domain.User", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Gunetberg.Domain.Post", b =>

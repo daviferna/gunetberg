@@ -3,11 +3,15 @@ using Gunetberg.Domain;
 using Gunetberg.Domain.Restrictions;
 using Gunetberg.Exceptions;
 using Gunetberg.Extension;
+using Gunetberg.Helpers;
 using Gunetberg.Infrastructure;
 using Gunetberg.Types;
 using Gunetberg.Types.Post;
 using Gunetberg.Types.Section;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Gunetberg.Business
@@ -26,6 +30,7 @@ namespace Gunetberg.Business
         public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int itemsPerPage)
         {
             var result = new PFOCollection<PostDto>();
+            result.FilteredBy = new List<string>();
 
             var posts = _dbContext.Posts.AsQueryable();
 
@@ -33,14 +38,17 @@ namespace Gunetberg.Business
             if (!string.IsNullOrWhiteSpace(title))
             {
                 posts = posts.Where(x => x.Title.Contains(title));
+                result.FilteredBy.Add("title");
             }
             if (from.HasValue)
             {
                 posts = posts.Where(x => x.CreationDate >= from.Value);
+                result.FilteredBy.Add("from");
             }
             if (to.HasValue)
             {
                 posts = posts.Where(x => x.CreationDate <= from.Value);
+                result.FilteredBy.Add("to");
             }
 
             #endregion
@@ -73,8 +81,9 @@ namespace Gunetberg.Business
                      PostId = x.PostId,
                      Title = x.Title,
                      HeaderImage = x.HeaderImage,
-                     CreationDate = x.CreationDate,
-                     AuthorAlias = x.Author.Alias
+                     CreationDate = x.CreationDate.ToUniversalTime(),
+                     AuthorAlias = x.Author.Alias,
+                     Description = x.Sections.Where(x=>x.Type == SectionType.Markdown).Select(y=>y.Content.Substring(0, 150)).FirstOrDefault()+"..."
                  }).ToList();
             #endregion
 
@@ -90,7 +99,7 @@ namespace Gunetberg.Business
                                          PostId = x.PostId,
                                          AuthorAlias = x.Author.Alias,
                                          HeaderImage = x.HeaderImage,
-                                         CreationDate = x.CreationDate,
+                                         CreationDate = x.CreationDate.ToUniversalTime(),
                                          Title = x.Title,
                                          Sections = x.Sections.Select(y => new SectionDto
                                          {
@@ -104,7 +113,7 @@ namespace Gunetberg.Business
 
             if (post == null)
             {
-                throw new PostException(PostError.PostDoesNotExist);
+                throw new PostException(PostError.PostNotFound);
             }
 
             return post;
@@ -157,5 +166,19 @@ namespace Gunetberg.Business
             };
         }
    
+        public byte[] DownloadPost(long postId)
+        {
+            var post = _dbContext.Posts
+                .Include(x=>x.Sections)
+                .Include(x=>x.Author)
+                .FirstOrDefault(x =>x.PostId==postId);
+
+            if(post == null)
+            {
+                throw new PostException(PostError.PostNotFound);
+            }
+            
+            return DownloaderHelper.GetInstance().GeneratePostPdf(post.Title, post.Author.Alias, post.CreationDate, post.Sections.Select(x=>x.Content));
+        }
     }
 }

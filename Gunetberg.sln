@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Cloud", "Gunetber
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Extension", "Gunetberg.Extension\Gunetberg.Extension.csproj", "{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Resources", "Gunetberg.Resources\Gunetberg.Resources.csproj", "{6D4B0851-9721-41A7-8155-220FA9D4B228}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D4B0851-9721-41A7-8155-220FA9D4B228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D4B0851-9721-41A7-8155-220FA9D4B228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D4B0851-9721-41A7-8155-220FA9D4B228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D4B0851-9721-41A7-8155-220FA9D4B228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

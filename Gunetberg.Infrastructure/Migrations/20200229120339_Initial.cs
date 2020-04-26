@@ -25,6 +25,27 @@ namespace Gunetberg.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    NotificationId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CommitedDate = table.Column<DateTime>(nullable: true),
+                    Kind = table.Column<string>(maxLength: 50, nullable: false),
+                    UserId = table.Column<long>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.NotificationId);
+                    table.ForeignKey(
+                        name: "FK_Notifications_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
@@ -118,6 +139,11 @@ namespace Gunetberg.Infrastructure.Migrations
                 column: "ResponseToCommentaryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Notifications_UserId",
+                table: "Notifications",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Posts_AuthorUserId",
                 table: "Posts",
                 column: "AuthorUserId");
@@ -144,6 +170,9 @@ namespace Gunetberg.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Commentaries");
+
+            migrationBuilder.DropTable(
+                name: "Notifications");
 
             migrationBuilder.DropTable(
                 name: "Section");

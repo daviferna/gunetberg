@@ -28,7 +28,7 @@ namespace Gunetberg.Web.Controllers
 
         [Route("list")]
         [HttpGet]
-        public PFOCollection<CommentaryDto> GetPosts(long postId, int page, int itemsPerPage, long? commentaryId)
+        public PFOCollection<CommentaryDto> GetCommentaries(long postId, int page, int itemsPerPage, long? commentaryId)
         {
             return _commentaryBusiness.GetCommentaries(postId, page, itemsPerPage, commentaryId);
         }

@@ -1,0 +1,20 @@
+﻿.chip-group-component {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.chip-component {
+    background: #FFF;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    color: #FFF;
+    margin: 5px;
+    font-family: 'Roboto Slab', serif;
+    border-radius:15px;
+
+    .clickable{
+        cursor:pointer;
+        background:#000;
+    }
+}

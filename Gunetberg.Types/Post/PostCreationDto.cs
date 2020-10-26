@@ -9,6 +9,6 @@ namespace Gunetberg.Types.Post
     {
         public string Title { get; set; }
         public string HeaderImage { get; set; }
-        public ICollection<SectionCreationDto> Sections { get; set; }
+        public System.Collections.Generic.ICollection<SectionCreationDto> Sections { get; set; }
     }
 }

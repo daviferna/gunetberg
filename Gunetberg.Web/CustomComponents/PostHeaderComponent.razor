@@ -1,0 +1,17 @@
+﻿@using Gunetberg.Web.Components;
+
+<div class="post-header-component">
+    <div class="post-header-title">
+        <h1>@Title</h1>
+        <ChipGroupComponent>
+            <ChipComponent>Tecnología</ChipComponent>
+            <ChipComponent>Cosas</ChipComponent>
+        </ChipGroupComponent>
+    </div>
+    
+    <div class="post-header-image">
+        <CardComponent IsImageCard="true">
+            <CardImageComponent Source="@HeaderImage"></CardImageComponent>
+        </CardComponent>
+    </div>
+</div>

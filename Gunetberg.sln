@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Web", "Gunetberg.Web\Gunetberg.Web.csproj", "{01FBC5F5-DB6B-4285-81D7-5D026589FB42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Api", "Gunetberg.Api\Gunetberg.Api.csproj", "{01FBC5F5-DB6B-4285-81D7-5D026589FB42}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Domain", "Gunetberg.Domain\Gunetberg.Domain.csproj", "{E758DEE4-8B4B-4568-B8FA-2DC04546C53A}"
 EndProject
@@ -34,6 +34,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Extension", "Gunetberg.Extension\Gunetberg.Extension.csproj", "{16C82357-8E1A-4B65-A8DF-C449CE7F7D36}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Resources", "Gunetberg.Resources\Gunetberg.Resources.csproj", "{6D4B0851-9721-41A7-8155-220FA9D4B228}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Web", "Gunetberg.Web\Gunetberg.Web.csproj", "{898377C5-6B60-45AC-A8C7-A26BAB676E47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunetberg.Configuration", "Gunetberg.Configuration\Gunetberg.Configuration.csproj", "{A45CE8EC-8058-4085-95F2-641ED6F84B54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +89,14 @@ Global
 		{6D4B0851-9721-41A7-8155-220FA9D4B228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D4B0851-9721-41A7-8155-220FA9D4B228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D4B0851-9721-41A7-8155-220FA9D4B228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{898377C5-6B60-45AC-A8C7-A26BAB676E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{898377C5-6B60-45AC-A8C7-A26BAB676E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{898377C5-6B60-45AC-A8C7-A26BAB676E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{898377C5-6B60-45AC-A8C7-A26BAB676E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A45CE8EC-8058-4085-95F2-641ED6F84B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A45CE8EC-8058-4085-95F2-641ED6F84B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A45CE8EC-8058-4085-95F2-641ED6F84B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A45CE8EC-8058-4085-95F2-641ED6F84B54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

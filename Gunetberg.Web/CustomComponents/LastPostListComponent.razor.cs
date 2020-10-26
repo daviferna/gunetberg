@@ -1,0 +1,29 @@
+﻿using Gunetberg.Types.Post;
+using Gunetberg.Web.Providers;
+using Gunetberg.Web.Services;
+using Microsoft.AspNetCore.Components;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Gunetberg.Web.CustomComponents
+{
+    public partial class LastPostListComponent: ComponentBase
+    {
+
+        [Inject]
+        private LocalizationProvider _localizationProvider { get; set; }
+
+        [Inject]
+        private PostService _postService { get; set; }
+
+
+        public ICollection<PostDto> LastPosts { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            LastPosts = await _postService.GetLastPosts();
+        }
+    }
+}

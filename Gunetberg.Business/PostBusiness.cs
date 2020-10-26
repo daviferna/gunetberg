@@ -1,4 +1,5 @@
 ﻿using Gunetberg.Cloud;
+using Gunetberg.Configuration;
 using Gunetberg.Domain;
 using Gunetberg.Domain.Restrictions;
 using Gunetberg.Exceptions;
@@ -6,11 +7,13 @@ using Gunetberg.Extension;
 using Gunetberg.Helpers;
 using Gunetberg.Infrastructure;
 using Gunetberg.Types;
+using Gunetberg.Types.Author;
 using Gunetberg.Types.Post;
 using Gunetberg.Types.Section;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 
@@ -20,11 +23,14 @@ namespace Gunetberg.Business
     {
         private readonly Context _dbContext;
         private readonly BlobStorage _blobStorage;
+        private readonly ApplicationConfiguration _applicationConfiguration;
 
-        public PostBusiness(Context dbContext, BlobStorage blobStorage)
+
+        public PostBusiness(Context dbContext, BlobStorage blobStorage, ApplicationConfiguration applicationConfiguration)
         {
             _dbContext = dbContext;
             _blobStorage = blobStorage;
+            _applicationConfiguration = applicationConfiguration;
         }
 
         public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int itemsPerPage)
@@ -82,12 +88,36 @@ namespace Gunetberg.Business
                      Title = x.Title,
                      HeaderImage = x.HeaderImage,
                      CreationDate = x.CreationDate.ToUniversalTime(),
-                     AuthorAlias = x.Author.Alias,
-                     Description = x.Sections.Where(x=>x.Type == SectionType.Markdown).Select(y=>y.Content.Substring(0, 150)).FirstOrDefault()+"..."
+                     Author = new AuthorDto
+                     {
+                         Alias = x.Author.Alias
+                     },
+                     Description = x.Sections.Where(x => x.Type == SectionType.Markdown).Select(y => y.Content.Substring(0, 150)).FirstOrDefault() + "..."
                  }).ToList();
             #endregion
 
             return result;
+        }
+
+        public PostDto GetFeaturedPost()
+        {
+            var x =_dbContext.Posts.Where(x => x.FeaturedDate.HasValue)
+                .OrderByDescending(x=>x.FeaturedDate)
+                .Select(x => new PostDto
+                {
+                    PostId = x.PostId,
+                    Author = new AuthorDto
+                    {
+                        Alias = x.Author.Alias,
+                        ProfilePicture = _applicationConfiguration.GetProfilePictureUrl(x.Author.ProfilePicture)
+                    },
+                    CreationDate = x.CreationDate,
+                    Description = x.Sections.FirstOrDefault(x => x.Type == SectionType.Markdown).Content.Substring(0, 150),
+                    HeaderImage = x.HeaderImage,
+                    Title = x.Title
+                }).FirstOrDefault();
+
+            return x;
         }
 
         public CompletePostDto GetPost(long postId)
@@ -97,16 +127,21 @@ namespace Gunetberg.Business
                                      new CompletePostDto
                                      {
                                          PostId = x.PostId,
-                                         AuthorAlias = x.Author.Alias,
                                          HeaderImage = x.HeaderImage,
                                          CreationDate = x.CreationDate.ToUniversalTime(),
                                          Title = x.Title,
+                                         Author = new AuthorDto
+                                         {
+                                             Alias = x.Author.Alias,
+                                             Description = x.Author.Description,
+                                             ProfilePicture = _applicationConfiguration.GetProfilePictureUrl(x.Author.ProfilePicture)
+                                         },
                                          Sections = x.Sections.Select(y => new SectionDto
                                          {
                                              SectionId = y.SectionId,
                                              CreationDate = y.CreationDate,
                                              Content = y.Content,
-                                             Type = y.Type
+                                             Type = y.Type.ToString()
                                          }).ToList()
                                      })
                                  .FirstOrDefault(x => x.PostId == postId);
@@ -137,14 +172,15 @@ namespace Gunetberg.Business
             var utcNow = DateTime.UtcNow;
             var user = _dbContext.Users.FirstOrDefault(x => x.UserId == userId);
 
-            if(user == null)
+            if (user == null)
             {
                 throw new UserException(UserError.DoesNotExist);
             }
 
-            var sections = newPost.Sections?.Select(x => new Section {
-                Type = (SectionType)x.SectionType, 
-                Content = x.Content, 
+            var sections = newPost.Sections?.Select(x => new Section
+            {
+                Type = (SectionType)x.SectionType,
+                Content = x.Content,
                 CreationDate = utcNow
             }).ToList();
             var post = new Post
@@ -153,7 +189,7 @@ namespace Gunetberg.Business
                 CreationDate = DateTime.UtcNow,
                 Author = user,
                 Sections = sections,
-                HeaderImage = newPost.HeaderImage                
+                HeaderImage = newPost.HeaderImage
             };
 
             _dbContext.Posts.Add(post);
@@ -165,20 +201,20 @@ namespace Gunetberg.Business
                 Id = post.PostId
             };
         }
-   
+
         public byte[] DownloadPost(long postId)
         {
             var post = _dbContext.Posts
-                .Include(x=>x.Sections)
-                .Include(x=>x.Author)
-                .FirstOrDefault(x =>x.PostId==postId);
+                .Include(x => x.Sections)
+                .Include(x => x.Author)
+                .FirstOrDefault(x => x.PostId == postId);
 
-            if(post == null)
+            if (post == null)
             {
                 throw new PostException(PostError.PostNotFound);
             }
-            
-            return DownloaderHelper.GetInstance().GeneratePostPdf(post.Title, post.Author.Alias, post.CreationDate, post.Sections.Select(x=>x.Content));
+
+            return DownloaderHelper.GetInstance().GeneratePostPdf(post.Title, post.Author.Alias, post.CreationDate, post.Sections.Select(x => x.Content));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gunetberg.Types.Author;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace Gunetberg.Types.Post
         public string Title { get; set; }
         public string HeaderImage { get; set; }
         public DateTime CreationDate { get; set; }
-        public string AuthorAlias { get; set; }
         public string Description { get; set; }
+        public AuthorDto Author { get; set; }
     }
 }

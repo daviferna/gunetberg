@@ -1,0 +1,17 @@
+﻿.post-header-component {
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    .post-header-title {
+        grid-column: 1/3;
+
+        h1{
+            font-size: 3rem;
+        }
+    }
+
+    .post-header-image{
+        grid-column:3/6;
+    }
+}

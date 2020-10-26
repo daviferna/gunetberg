@@ -1,0 +1,32 @@
+﻿.top-post-list-component {
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 7px 7px 14px 0px #DDD;
+    background: #FFF;
+    padding: 0 10px;
+
+    ol {
+        padding: 0;
+        list-style: none;
+        counter-reset: list-counter;
+    }
+
+    ol li {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        counter-increment: list-counter;
+        padding: 10px 0;
+    }
+
+    ol li::before {
+        font-size: 2rem;
+        content: counter(list-counter);
+        padding: 0 15px 0 0;
+    }
+
+    h4, p {
+        padding: 0;
+        margin: 0;
+    }
+}

@@ -1,0 +1,17 @@
+﻿<div class="top-post-list-component">
+    <h3>Mejor valorados</h3>
+    <ol>
+        @if (TopPosts != null)
+        {
+            @foreach (var TopPost in TopPosts)
+            {
+                <li>
+                    <div>
+                        <h4>@TopPost.Title</h4>
+                        <p>Fecha y demás</p>
+                    </div>
+                </li>
+            }
+        }
+        </ol>
+    </div>

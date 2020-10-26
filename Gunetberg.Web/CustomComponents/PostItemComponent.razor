@@ -1,0 +1,35 @@
+﻿@using Gunetberg.Web.Components;
+
+<div class="post-item-component">
+    <CardComponent Onclick="@OnClick">
+        <CardImageComponent Source="@HeaderImage"></CardImageComponent>
+        <CardContentComponent>
+            <h2>@Title</h2>
+            <p>@Description</p>
+            <LabelComponent>
+                <IconComponent Id="fal fa-calendar-alt"></IconComponent>
+                <CaptionComponent>
+                    @CreationDate.ToShortDateString()
+                </CaptionComponent>
+            </LabelComponent>
+        </CardContentComponent>
+    </CardComponent>
+</div>
+
+<div class="post-item-component">
+    <CardComponent IsImageCard="true" Onclick="@OnClick">
+        <CardImageComponent Source="@HeaderImage"></CardImageComponent>
+        <CardContentComponent>
+            <h2>@Title</h2>
+            <p>@Description</p>
+            <LabelComponent>
+                <IconComponent Id="fal fa-calendar-alt"></IconComponent>
+                <CaptionComponent>
+                    @CreationDate.ToShortDateString()
+                </CaptionComponent>
+            </LabelComponent>
+        </CardContentComponent>
+    </CardComponent>
+</div>
+
+

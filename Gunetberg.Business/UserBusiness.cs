@@ -1,4 +1,5 @@
 ﻿using Gunetberg.Cloud;
+using Gunetberg.Configuration;
 using Gunetberg.Domain;
 using Gunetberg.Domain.Restrictions;
 using Gunetberg.Exceptions;
@@ -17,11 +18,13 @@ namespace Gunetberg.Business
     {
         private readonly Context _dbContext;
         private readonly BlobStorage _blobStorage;
+        private readonly ApplicationConfiguration _applicationConfiguration;
 
-        public UserBusiness(Context dbContext, BlobStorage blobStorage)
+        public UserBusiness(Context dbContext, BlobStorage blobStorage, ApplicationConfiguration applicationConfiguration)
         {
             _dbContext = dbContext;
             _blobStorage = blobStorage;
+            _applicationConfiguration = applicationConfiguration;
         }
 
         public CreationResultDto<long> CreateUser(UserCreationDto newUser)
@@ -99,7 +102,7 @@ namespace Gunetberg.Business
                 Alias = x.Alias,
                 Email = x.Email,
                 UserId = x.UserId,
-                ProfilePicture = x.ProfilePicture.HasValue? $"https://gunetbergstorage.blob.core.windows.net/profilepictures/{x.ProfilePicture}.png" : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                ProfilePicture = _applicationConfiguration.GetProfilePictureUrl(x.ProfilePicture)
             }).FirstOrDefault();
 
             if (user == null)
@@ -131,10 +134,10 @@ namespace Gunetberg.Business
             await _blobStorage.Upload(profilePhoto, $"{user.ProfilePicture}.png");
 
             _dbContext.SaveChanges();
-          
+
             return new CreationResultDto<string>
             {
-                Id = $"https://gunetbergstorage.blob.core.windows.net/profilepictures/{user.ProfilePicture}.png"
+                Id = _applicationConfiguration.GetProfilePictureUrl(user.ProfilePicture)
             };
         }
 

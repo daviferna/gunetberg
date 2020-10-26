@@ -1,0 +1,24 @@
+﻿@page "/post/{PostId:long}"
+
+@using Gunetberg.Web.CustomComponents;
+
+<div>
+
+    @if (Post != null)
+    {
+
+        <PostHeaderComponent Title="@Post.Title"
+                             HeaderImage="@Post.HeaderImage"
+                             CreationDate="@Post.CreationDate"></PostHeaderComponent>
+
+        <PostSectionComponent Sections="@Post.Sections"></PostSectionComponent>
+
+        <PostAuthorComponent ProfilePicture="@Post.Author.ProfilePicture"
+                             Description="@Post.Author.Description"
+                             Alias="@Post.Author.Alias"></PostAuthorComponent>
+    }
+
+</div>
+
+
+

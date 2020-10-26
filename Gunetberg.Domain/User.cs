@@ -13,6 +13,7 @@ namespace Gunetberg.Domain
         public DateTime CreationDate { get; set; }
         public string Password { get; set; }
         public Role Role { get; set; }
+        public string Description { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Commentary> Commentaries { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; }

@@ -1,0 +1,5 @@
+﻿@inherits ThemeableComponent
+
+<div class="chip-component" style="background:@(IsSecondary? ThemeProvider.Secondary : ThemeProvider.Primary);color:@(IsSecondary? ThemeProvider.OnSecondary : ThemeProvider.OnPrimary)">
+    @ChildContent
+</div>

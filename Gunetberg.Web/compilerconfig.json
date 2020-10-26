@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/components.css",
+    "inputFile": "Styles/components.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/custom-components.css",
+    "inputFile": "Styles/custom-components.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/pages.css",
+    "inputFile": "Styles/pages.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/common.css",
+    "inputFile": "Styles/common.scss"
+  }
+]

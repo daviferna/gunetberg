@@ -1,0 +1,10 @@
+﻿<div class="menu-component text-right" @onmouseover="ShowMenu">
+    Idioma
+    @if (_isMenuVisible)
+    {
+    <div class="menu-context-container"  @onmouseout="HideMenu">
+        @ChildContent
+    </div>
+    }
+
+</div>

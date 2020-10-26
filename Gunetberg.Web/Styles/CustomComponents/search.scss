@@ -1,0 +1,15 @@
+﻿.search-component {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: #FFF;
+    padding: 10px 15px;
+    border-radius: 20px;
+    box-shadow: 7px 7px 14px 0px #DDD;
+
+    input{
+        flex: 1 1 auto;
+        outline: none;
+        border:none;
+    }
+}

@@ -1,0 +1,20 @@
+﻿@inherits LayoutComponentBase
+
+@using Gunetberg.Web.CustomComponents;
+@using Gunetberg.Web.Components;
+
+@namespace Gunetberg.Web.Layouts
+
+
+<ModalComponent></ModalComponent>
+<div class="main-layout-container">
+    <div class="main-layout-stretch-container">
+        <HeaderComponent></HeaderComponent>
+    </div>
+    <div class="main-layout-stretch-container">
+        <div class="main-layout-center-container">
+            @Body
+            <LateralBarComponent></LateralBarComponent>
+        </div>
+    </div>
+</div>

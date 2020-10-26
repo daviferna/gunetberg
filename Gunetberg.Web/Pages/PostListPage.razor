@@ -1,0 +1,39 @@
+﻿@page "/"
+
+@using Gunetberg.Web.CustomComponents;
+
+
+<div class="post-list-container">
+
+    @if (FeaturedPost != null)
+    {
+        <MainPostItemComponent PostId="@FeaturedPost.PostId"
+                               Title="@FeaturedPost.Title"
+                               Description="@FeaturedPost.Description"
+                               HeaderImage="@FeaturedPost.HeaderImage"
+                               CreationDate="@FeaturedPost.CreationDate"></MainPostItemComponent>
+    }
+
+    @if (Posts != null)
+    {
+        @foreach (var Post in Posts.Items)
+        {
+            <PostItemComponent PostId="@Post.PostId"
+                               Title="@Post.Title"
+                               Description="@Post.Description"
+                               HeaderImage="@Post.HeaderImage"
+                               CreationDate="@Post.CreationDate"
+                               OnClick="()=>LoadPost(Post.PostId)"></PostItemComponent>
+        }
+    }
+
+    @if (FeaturedPost != null)
+    {
+        <PostItemComponent PostId="@FeaturedPost.PostId"
+                           Title="@FeaturedPost.Title"
+                           Description="@FeaturedPost.Description"
+                           HeaderImage="@FeaturedPost.HeaderImage"
+                           CreationDate="@FeaturedPost.CreationDate"></PostItemComponent>
+    }
+    </div>
+

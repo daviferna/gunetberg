@@ -1,0 +1,46 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap");
+body {
+  margin: 0;
+  background: #EFEFEF;
+  font-family: 'Lora', serif;
+  font-size: 16px; }
+
+.main-layout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; }
+
+.main-layout-stretch-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.main-layout-center-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-column-gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+  padding: 20px 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-family: 'Roboto Slab', serif; }
+
+.vertical-padding {
+  padding: 20px 0; }
+
+.text-justify {
+  text-align: justify; }
+
+.text-center {
+  text-align: center; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }

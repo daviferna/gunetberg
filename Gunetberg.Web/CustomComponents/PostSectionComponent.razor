@@ -1,0 +1,24 @@
+﻿@using Gunetberg.Domain;
+
+@foreach (var Section in Sections)
+{
+<div class="post-section-component">
+    @if (Section.Type == nameof(SectionType.Markdown))
+    {
+        <PostTextSectionComponent Content="@Section.Content"></PostTextSectionComponent>
+    }
+    @if (Section.Type == nameof(SectionType.Image))
+    {
+        <PostImageSectionComponent Source="@Section.Content"></PostImageSectionComponent>
+    }
+    @if (Section.Type == nameof(SectionType.Code))
+    {
+        <PostCodeSectionComponent Code="@Section.Content"></PostCodeSectionComponent>
+    }
+
+    @if (Section.Type == nameof(SectionType.TreeDimensionalObject))
+    {
+        <Post3DObjectSectionComponent Source="@Section.Content"></Post3DObjectSectionComponent>
+    }
+</div>
+}

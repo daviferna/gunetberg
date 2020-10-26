@@ -6,6 +6,10 @@ namespace Gunetberg.Domain
 {
     public enum SectionType
     {
-        Markdown
+        Markdown,
+        Image,
+        Code,
+        TreeDimensionalObject,
+        Download
     }
 }

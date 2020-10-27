@@ -11,6 +11,7 @@ namespace Gunetberg.Infrastructure.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<Section> builder)
         {
+            builder.ToTable("Sections");
             builder.HasKey(x => x.SectionId);
             builder.Property(x => x.SectionId).ValueGeneratedOnAdd();
             builder.Property(x => x.CreationDate).IsRequired();

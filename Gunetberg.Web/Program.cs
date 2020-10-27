@@ -51,6 +51,7 @@ namespace Gunetberg.Web
             }));
             
             builder.Services.AddTransient<PostService>();
+            builder.Services.AddTransient<TagService>();
 
             await builder.Build().RunAsync();
         }

@@ -35,11 +35,6 @@ namespace Gunetberg.Api
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             services.AddControllersWithViews();
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
 
             services.AddDbContext<Context>(options =>
             {
@@ -49,7 +44,7 @@ namespace Gunetberg.Api
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                var signingKey = new SymmetricSecurityKey(Encoding.Default.GetBytes("MG6zwQQsHys72LwmNUNHH3ZkS3w8WtL3KuugDpcfEDh8jVJZPjM5qQxTyruXZcTsERaUmz7GsH8xduwVew96ZTd5zWDYZ3AhJK5znpbt6vayHbkAtq6r6strmbJMDBGeLK4n6ARR7Y8fnnWkHYD6Y6NesEe67TdfRmCDzmkTV7mehZeAvt5BHfEw9r4SS4b69D2qMTz27CB4UmZ6rhwLxDXjTvWjGYfYFtgdXEb2pmAH54r4SfKuunkKW5q6uSP5"));
+                var signingKey = new SymmetricSecurityKey(Encoding.Default.GetBytes(Configuration.GetConnectionString("JsonSignatureKey")));
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = false,
@@ -59,10 +54,13 @@ namespace Gunetberg.Api
                 };
             });
 
+            services.AddSwaggerGen();
+
             services.AddScoped<BlobStorage>(x=> new BlobStorage(Configuration.GetConnectionString("StorageAccount"), Configuration.GetConnectionString("ProfilePictureContainer")));
             services.AddScoped<AuthBusiness>();
             services.AddScoped<UserBusiness>();
             services.AddScoped<PostBusiness>();
+            services.AddScoped<TagBusiness>();
             services.AddScoped<NotificationBusiness>();
             services.AddScoped<CommentaryBusiness>();
             services.AddScoped<ApplicationConfiguration>();
@@ -88,16 +86,17 @@ namespace Gunetberg.Api
             );
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            if (!env.IsDevelopment())
-            {
-                app.UseSpaStaticFiles();
-            }
 
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(x=>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Gunetberg");
+            });
 
             app.UseEndpoints(endpoints =>
             {

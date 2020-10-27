@@ -2,8 +2,11 @@
 
 <h2>Categorías</h2>
 <ChipGroupComponent>
-    <ChipComponent>Tecnología</ChipComponent>
-    <ChipComponent>Cocina</ChipComponent>
-    <ChipComponent>Arduino</ChipComponent>
-    <ChipComponent>Categoría random</ChipComponent>
+    @if (Tags != null)
+    {
+        @foreach (var Tag in Tags)
+        {
+            <ChipComponent>@Tag.Name</ChipComponent>
+        }
+    }
 </ChipGroupComponent>

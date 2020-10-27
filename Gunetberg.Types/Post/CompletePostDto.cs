@@ -7,6 +7,6 @@ namespace Gunetberg.Types.Post
 {
     public class CompletePostDto:PostDto
     {
-        public System.Collections.Generic.ICollection<SectionDto> Sections { get; set; }
+        public ICollection<SectionDto> Sections { get; set; }
     }
 }

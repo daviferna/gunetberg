@@ -110,6 +110,21 @@ namespace Gunetberg.Infrastructure.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("Gunetberg.Domain.PostTag", b =>
+                {
+                    b.Property<long>("PostId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TagId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("PostId", "TagId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("PostTags");
+                });
+
             modelBuilder.Entity("Gunetberg.Domain.Section", b =>
                 {
                     b.Property<long>("SectionId")
@@ -135,7 +150,30 @@ namespace Gunetberg.Infrastructure.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Section");
+                    b.ToTable("Sections");
+                });
+
+            modelBuilder.Entity("Gunetberg.Domain.Tag", b =>
+                {
+                    b.Property<long>("TagId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("TagId");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasName("Name_Index")
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Gunetberg.Domain.User", b =>
@@ -218,6 +256,21 @@ namespace Gunetberg.Infrastructure.Migrations
                         .WithMany("Posts")
                         .HasForeignKey("AuthorUserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Gunetberg.Domain.PostTag", b =>
+                {
+                    b.HasOne("Gunetberg.Domain.Post", "Post")
+                        .WithMany("PostTags")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Gunetberg.Domain.Tag", "Tag")
+                        .WithMany("PostTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Gunetberg.Domain.Section", b =>

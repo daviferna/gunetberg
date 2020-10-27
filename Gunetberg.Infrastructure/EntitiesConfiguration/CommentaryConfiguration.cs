@@ -9,6 +9,7 @@ namespace Gunetberg.Infrastructure.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<Commentary> builder)
         {
+            builder.ToTable("Commentaries");
             builder.HasKey(x => x.CommentaryId);
             builder.Property(x => x.CommentaryId).ValueGeneratedOnAdd();
             builder.Property(x => x.Content)

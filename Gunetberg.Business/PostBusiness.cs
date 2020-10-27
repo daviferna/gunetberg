@@ -10,6 +10,7 @@ using Gunetberg.Types;
 using Gunetberg.Types.Author;
 using Gunetberg.Types.Post;
 using Gunetberg.Types.Section;
+using Gunetberg.Types.Tag;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -101,8 +102,8 @@ namespace Gunetberg.Business
 
         public PostDto GetFeaturedPost()
         {
-            var x =_dbContext.Posts.Where(x => x.FeaturedDate.HasValue)
-                .OrderByDescending(x=>x.FeaturedDate)
+            var x = _dbContext.Posts.Where(x => x.FeaturedDate.HasValue)
+                .OrderByDescending(x => x.FeaturedDate)
                 .Select(x => new PostDto
                 {
                     PostId = x.PostId,
@@ -142,6 +143,11 @@ namespace Gunetberg.Business
                                              CreationDate = y.CreationDate,
                                              Content = y.Content,
                                              Type = y.Type.ToString()
+                                         }).ToList(),
+                                         Tags = x.PostTags.Select(y => new TagDto
+                                         {
+                                             TagId = y.TagId,
+                                             Name = y.Tag.Name
                                          }).ToList()
                                      })
                                  .FirstOrDefault(x => x.PostId == postId);

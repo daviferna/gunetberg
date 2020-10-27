@@ -12,6 +12,7 @@ namespace Gunetberg.Infrastructure.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<Notification> builder)
         {
+            builder.ToTable("Notifications");
             builder.HasKey(x => x.NotificationId);
             builder.Property(x => x.NotificationId).ValueGeneratedOnAdd();
             builder.Property(x => x.Kind).IsRequired()

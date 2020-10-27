@@ -1,4 +1,5 @@
 ﻿using Gunetberg.Types.Author;
+using Gunetberg.Types.Tag;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,6 @@ namespace Gunetberg.Types.Post
         public DateTime CreationDate { get; set; }
         public string Description { get; set; }
         public AuthorDto Author { get; set; }
+        public ICollection<TagDto> Tags { get; set; }
     }
 }

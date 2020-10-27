@@ -9,6 +9,5 @@ namespace Gunetberg.Web.CustomComponents
 {
     public partial class LateralBarComponent: ComponentBase
     {
-        public PostDto LastPosts { get; set; }
     }
 }

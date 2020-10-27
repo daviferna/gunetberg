@@ -21,12 +21,16 @@ namespace Gunetberg.Infrastructure
             modelBuilder.ApplyConfiguration(new SectionConfiguration());
             modelBuilder.ApplyConfiguration(new CommentaryConfiguration());
             modelBuilder.ApplyConfiguration(new NotificationConfiguration());
+            modelBuilder.ApplyConfiguration(new TagConfiguration());
+            modelBuilder.ApplyConfiguration(new PostTagConfiguration());
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Section> Section { get; set; }
+        public DbSet<Section> Sections { get; set; }
         public DbSet<Commentary> Commentaries { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Notification> PostTags { get; set; }
     }
 }

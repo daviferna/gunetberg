@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Gunetberg.Types.Tag;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gunetberg.Web.CustomComponents
 {
-    public partial class PostHeaderComponent: ComponentBase
+    public partial class PostHeaderComponent : ComponentBase
     {
         [Parameter]
         public string Title { get; set; }
@@ -16,5 +17,8 @@ namespace Gunetberg.Web.CustomComponents
 
         [Parameter]
         public DateTime CreationDate { get; set; }
+
+        [Parameter]
+        public ICollection<TagDto> Tags { get; set; }
     }
 }

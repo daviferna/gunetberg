@@ -8,6 +8,20 @@ namespace Gunetberg.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Tags",
+                columns: table => new
+                {
+                    TagId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    CreationDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tags", x => x.TagId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -15,9 +29,11 @@ namespace Gunetberg.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(maxLength: 150, nullable: false),
                     Alias = table.Column<string>(maxLength: 30, nullable: false),
+                    ProfilePicture = table.Column<Guid>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    Role = table.Column<string>(nullable: false)
+                    Role = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(maxLength: 300, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -54,7 +70,8 @@ namespace Gunetberg.Infrastructure.Migrations
                     Title = table.Column<string>(maxLength: 30, nullable: false),
                     HeaderImage = table.Column<string>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
-                    AuthorUserId = table.Column<long>(nullable: true)
+                    AuthorUserId = table.Column<long>(nullable: true),
+                    FeaturedDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,8 +103,7 @@ namespace Gunetberg.Infrastructure.Migrations
                         name: "FK_Commentaries_Users_AuthorUserId",
                         column: x => x.AuthorUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "UserId");
                     table.ForeignKey(
                         name: "FK_Commentaries_Posts_PostId",
                         column: x => x.PostId,
@@ -102,7 +118,31 @@ namespace Gunetberg.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Section",
+                name: "PostTags",
+                columns: table => new
+                {
+                    PostId = table.Column<long>(nullable: false),
+                    TagId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PostTags", x => new { x.PostId, x.TagId });
+                    table.ForeignKey(
+                        name: "FK_PostTags_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "PostId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PostTags_Tags_TagId",
+                        column: x => x.TagId,
+                        principalTable: "Tags",
+                        principalColumn: "TagId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sections",
                 columns: table => new
                 {
                     SectionId = table.Column<long>(nullable: false)
@@ -114,9 +154,9 @@ namespace Gunetberg.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Section", x => x.SectionId);
+                    table.PrimaryKey("PK_Sections", x => x.SectionId);
                     table.ForeignKey(
-                        name: "FK_Section_Posts_PostId",
+                        name: "FK_Sections_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "PostId",
@@ -149,9 +189,21 @@ namespace Gunetberg.Infrastructure.Migrations
                 column: "AuthorUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Section_PostId",
-                table: "Section",
+                name: "IX_PostTags_TagId",
+                table: "PostTags",
+                column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sections_PostId",
+                table: "Sections",
                 column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "Name_Index",
+                table: "Tags",
+                column: "Name",
+                unique: true,
+                filter: "[Name] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "Alias_Index",
@@ -175,7 +227,13 @@ namespace Gunetberg.Infrastructure.Migrations
                 name: "Notifications");
 
             migrationBuilder.DropTable(
-                name: "Section");
+                name: "PostTags");
+
+            migrationBuilder.DropTable(
+                name: "Sections");
+
+            migrationBuilder.DropTable(
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Posts");

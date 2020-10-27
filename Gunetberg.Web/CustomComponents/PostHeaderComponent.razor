@@ -4,11 +4,17 @@
     <div class="post-header-title">
         <h1>@Title</h1>
         <ChipGroupComponent>
-            <ChipComponent>Tecnología</ChipComponent>
-            <ChipComponent>Cosas</ChipComponent>
+            @if (Tags != null)
+            {
+                @foreach (var Tag in Tags)
+                {
+                    <ChipComponent>@Tag.Name</ChipComponent>
+
+                }
+            }
         </ChipGroupComponent>
     </div>
-    
+
     <div class="post-header-image">
         <CardComponent IsImageCard="true">
             <CardImageComponent Source="@HeaderImage"></CardImageComponent>

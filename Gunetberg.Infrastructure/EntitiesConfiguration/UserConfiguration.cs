@@ -12,6 +12,7 @@ namespace Gunetberg.Infrastructure.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.ToTable("Users");
             builder.HasKey(x => x.UserId);
             builder.Property(x => x.UserId).ValueGeneratedOnAdd();
             builder.Property(x => x.Email)

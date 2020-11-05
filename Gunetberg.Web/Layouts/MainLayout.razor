@@ -6,15 +6,17 @@
 @namespace Gunetberg.Web.Layouts
 
 
-<ModalComponent></ModalComponent>
-<div class="main-layout-container">
-    <div class="main-layout-stretch-container">
-        <HeaderComponent></HeaderComponent>
+    <div class="loading-window primary loading-window-animation">
+        <img src="media/logo.svg" class="loading-logo" />
     </div>
-    <div class="main-layout-stretch-container">
-        <div class="main-layout-center-container">
-            @Body
-            <LateralBarComponent></LateralBarComponent>
+    <div class="main-layout-container">
+        <div class="main-layout-stretch-container">
+            <HeaderComponent></HeaderComponent>
+        </div>
+        <div class="main-layout-stretch-container">
+            <div class="main-layout-center-container">
+                @Body
+                <LateralBarComponent></LateralBarComponent>
+            </div>
         </div>
     </div>
-</div>

@@ -4,6 +4,7 @@ using Gunetberg.Web.Providers;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Gunetberg.Web.Services
@@ -29,6 +30,11 @@ namespace Gunetberg.Web.Services
         public async Task<ICollection<PostDto>> GetLastPosts()
         {
             return await GetAsync<ICollection<PostDto>>($"api/post/last");
+        }
+
+        public async Task<ICollection<AutocompletePostDto>> GetAutocompletePosts(string title="", CancellationTokenSource? cancellationTokenSource = null)
+        {
+            return await GetAsync<ICollection<AutocompletePostDto>>($"api/post/autocomplete?title="+title, cancellationTokenSource);
         }
 
         public async Task<CompletePostDto> GetPost(long postId)

@@ -1,5 +1,19 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap");
+:root {
+  --primary: #FFFFFF;
+  --primary-variant: #FFFFFF;
+  --secondary: #FFFFFF;
+  --secondary-variant: #FFFFFF;
+  --background: #FFFFFF;
+  --surface: #FFFFFF;
+  --error: #FFFFFF;
+  --on-primary: #FFFFFF;
+  --on-secondary: #FFFFFF;
+  --on-background: #FFFFFF;
+  --on-surface: #FFFFFF;
+  --on-error: #FFFFFF; }
+
 body {
   margin: 0;
   background: #EFEFEF;
@@ -48,3 +62,30 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-right {
   text-align: right; }
+
+.text-bold {
+  font-weight: bold; }
+
+.primary {
+  background: var(--primary);
+  color: var(--on-primary); }
+
+.primary-reverse {
+  background: var(--on-primary);
+  color: var(--primary); }
+
+.secondary {
+  background: var(--secondary);
+  color: var(--on-secondary); }
+
+.secondary-reverse {
+  background: var(--on-secondary);
+  color: var(--seconday); }
+
+.error {
+  background: var(--error);
+  color: var(--on-error); }
+
+.error-reverse {
+  background: var(--on-error);
+  color: var(--error); }

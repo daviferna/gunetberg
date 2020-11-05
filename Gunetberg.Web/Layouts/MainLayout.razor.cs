@@ -7,15 +7,24 @@ using System.Threading.Tasks;
 
 namespace Gunetberg.Web.Layouts
 {
-    public partial class MainLayout: LayoutComponentBase
+    public partial class MainLayout : LayoutComponentBase
     {
-
         [Inject]
         private ThemeProvider _themeProvider { get; set; }
 
-        public void ChangeTheme()
+
+        protected override async Task OnInitializedAsync()
         {
-            _themeProvider.Primary = "#000";
+            await _themeProvider.UpdateTheme();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+
+            if (firstRender)
+            {
+                await _themeProvider.UpdateTheme();
+            }
         }
     }
 }

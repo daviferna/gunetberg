@@ -1,0 +1,42 @@
+﻿.loading-window {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #FFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    z-index: 999;    
+}
+
+.loading-window-animation {
+    animation: loading-fade;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    opacity: 0;
+    width: 0vw;
+    height: 0vh;
+}
+
+.loading-logo {
+    width: 100px;
+}
+
+@keyframes loading-fade{
+    0% {
+        opacity: 1;
+        width: 100vw;
+        height: 100vh;
+    }
+    99% {
+        width:100vw;
+        height:100vh;
+        opacity: 0;
+    }
+    100% {
+        width: 0vw;
+        height: 0vh;
+    }
+}

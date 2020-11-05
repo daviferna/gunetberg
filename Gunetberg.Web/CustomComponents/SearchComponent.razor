@@ -1,4 +1,42 @@
-﻿<div class="search-component">
-    <input type="text" placeholder="@Placeholder"/>
-    <i class="fal fa-search"></i>
+﻿@using Gunetberg.Web.Components;
+
+<div class="search-component" @onblur="ClearSearchField">
+
+    <input type="text" placeholder="@Placeholder" @bind="SearchField" @bind:event="oninput" />
+
+    @if (!string.IsNullOrWhiteSpace(SearchField))
+    {
+        <ButtonComponent OnClick="ClearSearchField" Icon="true"><IconComponent Id="fal fa-times"></IconComponent></ButtonComponent>
+
+        <div class="search-component-autocomplete">
+            @if (AutocompletePosts != null)
+            {
+                @if (AutocompletePosts.Any())
+                {
+                    <ul>
+                        @foreach (var AutocompletePost in AutocompletePosts)
+                        {
+                            <li @onclick="(() => LoadPost(AutocompletePost.PostId))">
+                                @HighlightTitle(AutocompletePost.Title)
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <div class="no-result">
+                        <CaptionComponent>Sin resultados</CaptionComponent>
+                    </div>
+                }
+                <ButtonComponent Raised="true" OnClick="@GoToAdvancedSearch">Búsqueda avanzada</ButtonComponent>
+            }
+        </div>
+    }
+    else
+    {
+        <IconComponent Id="fal fa-search"></IconComponent>
+    }
+
+
+
 </div>

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Gunetberg.Web.Pages
 {
-    public partial class DashboardPage: ComponentBase
+    public partial class PostSearch: ComponentBase
     {
+
     }
 }

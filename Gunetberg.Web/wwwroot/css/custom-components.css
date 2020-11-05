@@ -42,17 +42,52 @@
     margin: 0; }
 
 .search-component {
+  position: relative;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   background: #FFF;
   padding: 10px 15px;
   border-radius: 20px;
-  box-shadow: 7px 7px 14px 0px #DDD; }
+  box-shadow: 7px 7px 14px 0px #DDD;
+  min-height: 20px; }
   .search-component input {
     flex: 1 1 auto;
     outline: none;
     border: none; }
+
+.search-component-autocomplete {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 50px;
+  background: var(--surface);
+  border-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch; }
+  .search-component-autocomplete .no-result {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px; }
+  .search-component-autocomplete ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .search-component-autocomplete ul li {
+      padding: 10px 20px; }
+      .search-component-autocomplete ul li:hover {
+        background: var(--on-surface);
+        cursor: pointer; }
+    .search-component-autocomplete ul .autocomplete-load-more {
+      background: #000;
+      color: #FFF; }
+    .search-component-autocomplete ul .autocomplete-item-text {
+      padding: 0 10px; }
 
 .lateral-bar-component {
   display: flex;
@@ -72,13 +107,16 @@
     grid-column: 3/6; }
 
 .post-section-component {
-  padding: 20px 0; }
+  padding: 20px 0 0 0; }
   .post-section-component p {
     font-size: 1.1rem;
     line-height: 2.2rem; }
 
 .post-image-section-component {
   height: 300px; }
+
+.post-author-component {
+  padding: 20px 0 0 0; }
 
 .author-content-container {
   display: flex;
@@ -87,8 +125,8 @@
   align-content: start; }
 
 .author-image {
-  width: 100px;
-  height: 100px; }
+  width: 80px;
+  height: 80px; }
   .author-image img {
     width: 100%;
     height: 100%;

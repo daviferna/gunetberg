@@ -27,6 +27,12 @@ namespace Gunetberg.Api.Controllers
             return _postBusiness.GetPosts(title, from, to, orderBy, orderByDescending, page, itemsPerPage);
         }
 
+        [Route("autocomplete")]
+        [HttpGet]
+        public ICollection<AutocompletePostDto> GetAutocompletePosts(string title)
+        {
+            return _postBusiness.GetAutocompletePosts(title);
+        }
 
         [Route("last")]
         [HttpGet]

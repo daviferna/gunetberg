@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +9,8 @@ namespace Gunetberg.Web.Providers
 {
     public class ThemeProvider
     {
+        private readonly IJSRuntime _jSRuntime;
+
         public EventHandler OnThemeChanged;
 
         private string _primary;
@@ -16,7 +20,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _primary = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -26,7 +30,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _primaryVariant = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -37,7 +41,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _secondary = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -48,7 +52,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _secondaryVariant = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -59,7 +63,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _background = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -69,7 +73,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _surface = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -79,7 +83,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _error = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -90,7 +94,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _onPrimary = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -101,7 +105,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _onSecondary = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -112,7 +116,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _onBackground = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -123,7 +127,7 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _onSurface = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();;
             }
         }
 
@@ -134,12 +138,13 @@ namespace Gunetberg.Web.Providers
             set
             {
                 _onError = value;
-                OnThemeChanged?.Invoke(this, null);
+                UpdateTheme().Wait();
             }
         }
 
-        public ThemeProvider()
+        public ThemeProvider(IJSRuntime jSRuntime)
         {
+            _jSRuntime = jSRuntime;
             _primary = "#6200EE";
             _primaryVariant = "#3700B3";
             _secondary = "#03DAC6";
@@ -150,9 +155,14 @@ namespace Gunetberg.Web.Providers
             _onPrimary = "#FFFFFF";
             _onSecondary = "#FFFFFF";
             _onBackground = "#000000";
-            _onSurface = "#000000";
+            _onSurface = "#DDDDDD";
             _onError = "#FFFFFF";
         }
-
+    
+        public async Task UpdateTheme()
+        {
+            await _jSRuntime.InvokeVoidAsync("loadTheme", this);
+            OnThemeChanged?.Invoke(this, null);
+        }
     }
 }

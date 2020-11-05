@@ -1,5 +1,6 @@
 ﻿using Gunetberg.Web.BaseComponents;
 using Gunetberg.Web.Providers;
+using Markdig.Helpers;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,11 @@ namespace Gunetberg.Web.Components
         public bool Raised { get; set; }
 
         [Parameter]
+        public bool Icon { get; set; }
+
+        [Parameter]
         public Action OnClick { get; set; }
+
 
     }
 }

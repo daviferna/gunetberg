@@ -34,6 +34,18 @@ namespace Gunetberg.Business
             _applicationConfiguration = applicationConfiguration;
         }
 
+        public ICollection<AutocompletePostDto> GetAutocompletePosts(string title)
+        {
+            return _dbContext.Posts.Where(x => x.Title.Contains(title))
+                                    .Select(x => new AutocompletePostDto
+                                    {
+                                        PostId = x.PostId,
+                                        Title = x.Title
+                                    })
+                                    .Take(10)
+                                    .ToList();
+        }
+
         public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int itemsPerPage)
         {
             var result = new PFOCollection<PostDto>();

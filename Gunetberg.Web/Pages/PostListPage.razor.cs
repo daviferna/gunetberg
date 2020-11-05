@@ -9,11 +9,9 @@ namespace Gunetberg.Web.Pages
     public partial class PostListPage: ComponentBase
     {
         
-
         [Inject]
         private PostService _postService { get; set; }
 
-        
         [Inject]
         private NavigationManager _navigationManager { get; set; }
 

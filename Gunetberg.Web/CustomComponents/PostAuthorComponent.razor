@@ -1,16 +1,17 @@
 ﻿@using Gunetberg.Web.Components;
 
-
-<CardComponent>
-    <CardContentComponent>
-        <div class="author-content-container">
-            <div class="author-image">
-                <img src="@ProfilePicture" />
+<div class="post-author-component">
+    <CardComponent>
+        <CardContentComponent>
+            <div class="author-content-container">
+                <div class="author-image">
+                    <img src="@ProfilePicture" />
+                </div>
+                <div class="author-description">
+                    <h3 class="no-margin">@Alias</h3>
+                    <p class="text-justify no-">@Description</p>
+                </div>
             </div>
-            <div class="author-description">
-                <h3 class="no-margin">@Alias</h3>
-                <p class="text-justify no-">@Description</p>
-            </div>
-        </div>
-    </CardContentComponent>
-</CardComponent>
+        </CardContentComponent>
+    </CardComponent>
+</div>

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Gunetberg.Web.Services
@@ -15,12 +16,13 @@ namespace Gunetberg.Web.Services
             _httpClientProvider = httpClientProvider;
         }
 
-        public async Task<T> GetAsync<T>(string url)
+        public async Task<T> GetAsync<T>(string url, CancellationTokenSource cancellationTokenSource = null)
         {
             var client = _httpClientProvider.HttpClient;
             try
             {
-                HttpResponseMessage response = await client.GetAsync(url);
+                var cancellationToken = cancellationTokenSource?.Token ?? new CancellationToken();
+                HttpResponseMessage response = await client.GetAsync(url, cancellationToken);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 

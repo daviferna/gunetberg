@@ -1,5 +1,3 @@
 ﻿@inherits ThemeableComponent
 
-<button class="button-component" @onclick="OnClick" 
-        style="background:@(Raised? ThemeProvider.Primary: "transparent");
-        color:@(Raised? ThemeProvider.OnPrimary: ThemeProvider.Primary)">@ChildContent</button>
+<button class="button-component @(Icon? "button-icon": string.Empty) @(Raised? "button-raised": "button-flat")" @onclick="OnClick" >@ChildContent</button>

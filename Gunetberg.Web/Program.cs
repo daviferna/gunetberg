@@ -31,7 +31,7 @@ namespace Gunetberg.Web
                 Error = "#B00020",
                 OnPrimary = "#FFFFFF",
                 OnSecondary = "#FFFFFF",
-                OnBackground = "#000000",
+                OnBackground = "#111111",
                 OnSurface = "#333333",
                 OnError = "#FFFFFF",
             };

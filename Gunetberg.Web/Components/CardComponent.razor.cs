@@ -20,12 +20,5 @@ namespace Gunetberg.Web.Components
         [Parameter]
         public Action OnClick { get; set; }
 
-        public string GetStyleToApply()
-        {
-            var baseStyle = "card-component";
-            baseStyle+= IsImageCard ? " card-image-kind" : " card-content-kind";
-            baseStyle += !OmitShadow ? " card-component-shadow" : "";
-            return baseStyle;
-        }
     }
 }

@@ -7,9 +7,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center; }
-  .header-component .header-logo img {
+  .header-component .header-logo svg {
     width: 80px;
-    object-fit: scale-down; }
+    height: 80px;
+    fill: var(--on-background); }
   .header-component .menu-button {
     display: none; }
   .header-component progress {
@@ -20,7 +21,48 @@
     display: flex; } }
 
 .post-item-component {
+  position: relative;
   height: 450px; }
+  .post-item-component .card-component {
+    position: absolute;
+    animation: post-hover-end;
+    animation-duration: .1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1; }
+  .post-item-component:hover .card-component {
+    cursor: pointer;
+    width: 102%;
+    height: 102%;
+    top: -1%;
+    left: -1%;
+    animation: post-hover-start;
+    animation-duration: .1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1; }
+
+@keyframes post-hover-start {
+  0% {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%; }
+  100% {
+    width: 102%;
+    height: 102%;
+    top: -1%;
+    left: -1%; } }
+
+@keyframes post-hover-end {
+  0% {
+    width: 102%;
+    height: 102%;
+    top: -1%;
+    left: -1%; }
+  100% {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%; } }
 
 .main-post-item-component {
   grid-column: 1 / 4;

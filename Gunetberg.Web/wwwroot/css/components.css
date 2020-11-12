@@ -187,7 +187,7 @@ input.chip-selector-primary[type="checkbox"] {
     height: 24px;
     border-radius: 50%;
     background: var(--primary);
-    top: -2.5px; }
+    top: -2px; }
     .switch-component .switch-inner:hover {
       cursor: pointer;
       background: var(--primary-variant); }

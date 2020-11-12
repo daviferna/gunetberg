@@ -9,18 +9,24 @@
             </ButtonComponent>
         </div>
 
-        <SwitchComponent @bind-Value="@IsDarkThemeLoaded">Tema @(!IsDarkThemeLoaded? "oscuro":"claro")</SwitchComponent>
+
 
         <SearchComponent Placeholder="Buscar"></SearchComponent>
 
         <CategoriesComponent></CategoriesComponent>
+
+        <h2>Tema</h2>
+        <SwitchComponent @bind-Value="@IsDarkThemeLoaded">Tema @(!IsDarkThemeLoaded? "oscuro":"claro")</SwitchComponent>
+
         <LastPostListComponent></LastPostListComponent>
 
 
+
+
         @*<h2>Sobre mí</h2>
-            <CardComponent IsImageCard="true">
-                <CardImageComponent Source="https://media-exp1.licdn.com/dms/image/C5616AQFAsNrrHwpxfQ/profile-displaybackgroundimage-shrink_350_1400/0?e=1608768000&v=beta&t=qvYVVfvA6hBnwpJJdDqOHLuwsTEX0qHQPvVpLsifX0M"></CardImageComponent>
-            </CardComponent>*@
+        <CardComponent IsImageCard="true">
+            <CardImageComponent Source="https://media-exp1.licdn.com/dms/image/C5616AQFAsNrrHwpxfQ/profile-displaybackgroundimage-shrink_350_1400/0?e=1608768000&v=beta&t=qvYVVfvA6hBnwpJJdDqOHLuwsTEX0qHQPvVpLsifX0M"></CardImageComponent>
+        </CardComponent>*@
 
         @*<TopPostListComponent></TopPostListComponent>*@
     </div>

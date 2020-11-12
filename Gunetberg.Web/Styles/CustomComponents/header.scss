@@ -9,9 +9,10 @@
     align-items: center;
 
     .header-logo {
-        img {
+        svg {
             width: 80px;
-            object-fit: scale-down;
+            height: 80px;
+            fill:var(--on-background);
         }
     }
 

@@ -1,15 +1,27 @@
 ﻿@using Gunetberg.Web.Components;
 
-<div class="lateral-bar-component">
-    <SearchComponent Placeholder="Buscar"></SearchComponent>
+<div class="lateral-bar-component @(_lateralBarProvider.IsOpen? "lateral-bar-open": "lateral-bar-close")">
+    <div class="lateral-bar-opacity-mask" @onclick="_lateralBarProvider.Toggle"></div>
+    <div class="lateral-bar-content">
+        <div class="close-lateral-bar">
+            <ButtonComponent Raised="true" OnClick="_lateralBarProvider.Toggle">
+                Cerrar
+            </ButtonComponent>
+        </div>
 
-    <CategoriesComponent></CategoriesComponent>
-    <LastPostListComponent></LastPostListComponent>
+        <SwitchComponent @bind-Value="@IsDarkThemeLoaded">Tema @(!IsDarkThemeLoaded? "oscuro":"claro")</SwitchComponent>
 
-    @*<h2>Sobre mí</h2>
-    <CardComponent IsImageCard="true">
-        <CardImageComponent Source="https://media-exp1.licdn.com/dms/image/C5616AQFAsNrrHwpxfQ/profile-displaybackgroundimage-shrink_350_1400/0?e=1608768000&v=beta&t=qvYVVfvA6hBnwpJJdDqOHLuwsTEX0qHQPvVpLsifX0M"></CardImageComponent>
-    </CardComponent>*@
+        <SearchComponent Placeholder="Buscar"></SearchComponent>
 
-    @*<TopPostListComponent></TopPostListComponent>*@
+        <CategoriesComponent></CategoriesComponent>
+        <LastPostListComponent></LastPostListComponent>
+
+
+        @*<h2>Sobre mí</h2>
+            <CardComponent IsImageCard="true">
+                <CardImageComponent Source="https://media-exp1.licdn.com/dms/image/C5616AQFAsNrrHwpxfQ/profile-displaybackgroundimage-shrink_350_1400/0?e=1608768000&v=beta&t=qvYVVfvA6hBnwpJJdDqOHLuwsTEX0qHQPvVpLsifX0M"></CardImageComponent>
+            </CardComponent>*@
+
+        @*<TopPostListComponent></TopPostListComponent>*@
+    </div>
 </div>

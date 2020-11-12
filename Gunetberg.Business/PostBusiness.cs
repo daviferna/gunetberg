@@ -46,7 +46,7 @@ namespace Gunetberg.Business
                                     .ToList();
         }
 
-        public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int itemsPerPage)
+        public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int? itemsPerPage)
         {
             var result = new PFOCollection<PostDto>();
             result.FilteredBy = new List<string>();
@@ -89,9 +89,9 @@ namespace Gunetberg.Business
             #endregion
 
             #region pagination
-            result.ItemsPerPage = itemsPerPage > 10 ? itemsPerPage : 50;
-            result.TotalPages = (posts.Count() / result.ItemsPerPage) + 1;
-            result.Page = (page > result.TotalPages || page < 1) ? 1 : result.TotalPages;
+            result.ItemsPerPage = itemsPerPage?? 10;
+            result.TotalPages = (int)Math.Ceiling(posts.Count() / (decimal)result.ItemsPerPage);
+            result.Page = ( page > result.TotalPages || page < 1) ? 1 : result.TotalPages;
             var itemsToSkip = (result.Page - 1) * result.ItemsPerPage;
             var itemsToTake = (posts.Count() - itemsToSkip < result.ItemsPerPage) ? posts.Count() - itemsToSkip : result.ItemsPerPage;
             result.Items = (itemsToSkip > 0 ? posts.Skip(itemsToSkip) : posts).Take(itemsToTake).Select(x =>

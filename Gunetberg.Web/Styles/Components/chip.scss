@@ -11,10 +11,28 @@
     color: #FFF;
     margin: 5px;
     font-family: 'Roboto Slab', serif;
-    border-radius:15px;
-
-    .clickable{
-        cursor:pointer;
-        background:#000;
-    }
+    border-radius: 15px;
 }
+
+
+.chip-primary {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+.chip-secondary {
+    background: var(--secondary);
+    color: var(--on-secondary);
+}
+
+input.chip-selector-primary[type="checkbox"]{
+    @extend .chip-primary;
+    display: none;
+}
+
+input.chip-selector-primary[type="checkbox"]:checked + label {
+    @extend .chip-secondary;
+}
+
+
+

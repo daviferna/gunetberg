@@ -67,7 +67,7 @@ namespace Gunetberg.Infrastructure.Migrations
                 {
                     PostId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(maxLength: 30, nullable: false),
+                    Title = table.Column<string>(maxLength: 50, nullable: false),
                     HeaderImage = table.Column<string>(nullable: true),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     AuthorUserId = table.Column<long>(nullable: true),

@@ -2,17 +2,27 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    background: #FFF;
+    background: var(--surface);
     padding: 10px 15px;
     border-radius: 20px;
-    box-shadow: 7px 7px 14px 0px #DDD;
+    box-shadow: 7px 7px 14px 0px var(--shadow);
     min-height: 20px;
 
+
     input {
-        flex: 1 1 auto;
+
         outline: none;
         border: none;
+        background: transparent;
+        color: var(--on-surface);
+    }
+
+    .button-icon {
+        width: 20px;
+        height: 20px;
+        padding: 0px;
     }
 }
 
@@ -28,6 +38,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: stretch;
+    z-index: 999;
 
     .no-result {
         display: flex;
@@ -46,9 +57,13 @@
             padding: 10px 20px;
 
             &:hover {
-                background: var(--on-surface);
+                background: var(--shadow);
                 cursor: pointer;
             }
+        }
+
+        li:not(:first-child) {
+            border-top: 1px solid var(--shadow);
         }
 
         .autocomplete-load-more {

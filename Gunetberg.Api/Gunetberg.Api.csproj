@@ -15,6 +15,7 @@
     <Product>Gunetberg.Api</Product>
     <AssemblyName>Gunetberg.Api</AssemblyName>
     <RootNamespace>Gunetberg.Api</RootNamespace>
+    <UserSecretsId>860b9ce5-d217-4481-95c4-4819982e0e96</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

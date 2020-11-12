@@ -1,4 +1,11 @@
-﻿.last-post-list-container{
+﻿.last-post-list-component {
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items:stretch;
+}
+
+.last-post-item{
     height:150px;
     color:#FFF;
     margin: 0 0 10px 0;

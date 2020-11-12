@@ -11,6 +11,9 @@ namespace Gunetberg.Web.CustomComponents
     public partial class HeaderComponent : ComponentBase
     {
         [Inject]
+        private LateralBarProvider _lateralBarProvider { get; set; }
+
+        [Inject]
         private HttpClientProvider _httpClientProvider { get; set; }
 
         public int Progress { get; set; }

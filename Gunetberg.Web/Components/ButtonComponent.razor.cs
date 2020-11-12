@@ -1,5 +1,4 @@
-﻿using Gunetberg.Web.BaseComponents;
-using Gunetberg.Web.Providers;
+﻿using Gunetberg.Web.Providers;
 using Markdig.Helpers;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Gunetberg.Web.Components
 {
-    public partial class ButtonComponent: ThemeableComponent
+    public partial class ButtonComponent: ComponentBase
     {
         [Parameter]
         public RenderFragment ChildContent { get; set; }

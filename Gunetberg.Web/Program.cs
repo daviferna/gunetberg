@@ -17,9 +17,54 @@ namespace Gunetberg.Web
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddSingleton<HttpClientProvider>();
+            builder.Services.AddSingleton(sp => new HttpClientProvider("https://gunetberg.azurewebsites.net/"));
+
+            var lightTheme = new Theme
+            {
+                Primary = "#6200EE",
+                PrimaryVariant = "#3700B3",
+                Secondary = "#03DAC6",
+                SecondaryVariant = "#018786",
+                Background = "#EFEFEF",
+                Surface = "#FFFFFF",
+                Shadow="#DDDDDD",
+                Error = "#B00020",
+                OnPrimary = "#FFFFFF",
+                OnSecondary = "#FFFFFF",
+                OnBackground = "#000000",
+                OnSurface = "#333333",
+                OnError = "#FFFFFF",
+            };
+           
+            var darkTheme = new Theme
+            {
+                Primary = "#6200EE",
+                PrimaryVariant = "#3700B3",
+                Secondary = "#03DAC6",
+                SecondaryVariant = "#018786",
+                Background = "#333333",
+                Surface = "#555555",
+                Shadow="#222222",
+                Error = "#B00020",
+                OnPrimary = "#FFFFF",
+                OnSecondary = "#FFFFFF",
+                OnBackground = "#EEEEEE",
+                OnSurface = "#EEEEEE",
+                OnError = "#FFFFFF",
+            };
+
+            builder.Services.AddSingleton(sp => new ThemeConfiguration
+            {
+                Themes = new Dictionary<string, Theme>
+                {
+                    { "Light", lightTheme },
+                    { "Dark", darkTheme },
+                },
+                DefaultTheme = "Dark"
+            });
             builder.Services.AddSingleton<ThemeProvider>();
-            builder.Services.AddSingleton<IHtmlSanitizer, HtmlSanitizer>(sp=>
+            builder.Services.AddSingleton<LateralBarProvider>();
+            builder.Services.AddSingleton<IHtmlSanitizer, HtmlSanitizer>(sp =>
             {
                 var sanitizer = new HtmlSanitizer();
                 sanitizer.AllowedAttributes.Add("class");
@@ -49,7 +94,8 @@ namespace Gunetberg.Web
                     { es, "dddd, dd MMMM yyyy"}
                 }
             }));
-            
+
+            //Servicios de la api
             builder.Services.AddTransient<PostService>();
             builder.Services.AddTransient<TagService>();
 

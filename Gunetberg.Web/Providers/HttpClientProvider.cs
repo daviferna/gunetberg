@@ -13,11 +13,11 @@ namespace Gunetberg.Web.Providers
         public HttpClient HttpClient { get; }
         public ProgressMessageHandler ProgressHandler { get; }
 
-        public HttpClientProvider()
+        public HttpClientProvider(string baseAddress)
         {
             ProgressHandler = new ProgressMessageHandler();
             HttpClient = HttpClientFactory.Create(ProgressHandler);
-            HttpClient.BaseAddress = new Uri("http://localhost:63848/");
+            HttpClient.BaseAddress = new Uri(baseAddress);
         }
 
         

@@ -1,5 +1,8 @@
-﻿@inherits ThemeableComponent
+﻿@if (IsSelectable)
+{
+    <input id="@Id" class="@(IsSecondary ? "chip-selector-secondary" : "chip-selector-primary")"  type="checkbox" />
+}
 
-<div class="chip-component" style="background:@(IsSecondary? ThemeProvider.Secondary : ThemeProvider.Primary);color:@(IsSecondary? ThemeProvider.OnSecondary : ThemeProvider.OnPrimary)">
+<label for="@Id" class="chip-component @(IsSecondary ? "chip-secondary" : "chip-primary")">
     @ChildContent
-</div>
+</label>

@@ -22,7 +22,7 @@ namespace Gunetberg.Api.Controllers
 
         [Route("list")]
         [HttpGet]
-        public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int itemsPerPage)
+        public PFOCollection<PostDto> GetPosts(string title, DateTime? from, DateTime? to, string orderBy, bool orderByDescending, int page, int? itemsPerPage)
         {
             return _postBusiness.GetPosts(title, from, to, orderBy, orderByDescending, page, itemsPerPage);
         }

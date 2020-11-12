@@ -11,19 +11,26 @@ namespace Gunetberg.Web.CustomComponents
 {
     public partial class LastPostListComponent: ComponentBase
     {
+        [Inject]
+        private LateralBarProvider _lateralBarProvider { get; set; }
 
         [Inject]
-        private LocalizationProvider _localizationProvider { get; set; }
+        private NavigationManager _navigationManager { get; set; }
 
         [Inject]
         private PostService _postService { get; set; }
-
-
+ 
         public ICollection<PostDto> LastPosts { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
             LastPosts = await _postService.GetLastPosts();
+        }
+
+        public void LoadPost(long postId)
+        {
+            _lateralBarProvider.Close();
+            _navigationManager.NavigateTo($"post/{postId}");
         }
     }
 }

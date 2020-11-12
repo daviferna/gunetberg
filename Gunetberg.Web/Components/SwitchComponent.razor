@@ -1,0 +1,11 @@
+﻿<div class="switch-component">  
+    <input type="checkbox" id="@Id" @onchange="Change"/>
+    <label for="@Id">
+        <div class="switch-outer">
+            <div class="switch-inner @(Value? "switch-inner-true": "switch-inner-false")"></div>
+        </div>
+        <span class="switch-label">
+            @ChildContent
+        </span>
+    </label>
+</div>

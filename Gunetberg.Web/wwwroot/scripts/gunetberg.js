@@ -5,7 +5,8 @@
     root.style.setProperty('--secondary', theme.secondary);
     root.style.setProperty('--secondary-variant', theme.secondaryVariant);
     root.style.setProperty('--background', theme.background);
-    root.style.setProperty('-surface', theme.surface);
+    root.style.setProperty('--surface', theme.surface);
+    root.style.setProperty('--shadow', theme.shadow);
     root.style.setProperty('--error', theme.error);
     root.style.setProperty('--on-primary', theme.onPrimary);
     root.style.setProperty('--on-secondary', theme.onSecondary);

@@ -3,6 +3,6 @@ namespace Gunetberg.Domain.Restrictions
 {
     public static class PostRestrictions
     {
-        public const int TitleMaxLength = 30;
+        public const int TitleMaxLength = 50;
     }
 }

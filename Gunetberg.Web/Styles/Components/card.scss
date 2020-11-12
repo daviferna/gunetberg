@@ -1,11 +1,11 @@
 ﻿.card-component {
     border-radius: 7px;
     overflow: hidden;
-    background: #FFF; 
+    background: var(--surface); 
 }
 
 .card-component-shadow {
-    box-shadow: 7px 7px 14px 0px #DDD;
+    box-shadow: 7px 7px 14px 0px var(--shadow);
 }
 
 .card-content-kind {

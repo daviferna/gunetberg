@@ -1,0 +1,56 @@
+﻿.switch-component {
+    padding: 10px 0;
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+    label {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .switch-outer {
+        position: relative;
+        width: 50px;
+        height: 20px;
+        border-radius: 20px;
+        background: var(--surface);
+        box-shadow: 7px 7px 14px 0px var(--shadow);
+        margin: 0 2px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .switch-inner {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--primary);
+        top: -2.5px;
+
+        &:hover {
+            cursor: pointer;
+            background: var(--primary-variant);
+        }
+    }
+
+    .switch-inner-false {
+        left: -2px;
+    }
+
+    .switch-inner-true {
+        right: -2px;
+    }
+
+    .switch-label {
+        margin: 0 10px;
+    }
+}

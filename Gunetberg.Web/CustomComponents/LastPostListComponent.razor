@@ -1,24 +1,26 @@
 ﻿@using Gunetberg.Web.Components;
 
 
-<h2>Últimos posts</h2>
-@if (LastPosts != null)
-{
-    foreach (var LastPost in LastPosts)
+<div class="last-post-list-component">
+    <h2>Últimos posts</h2>
+    @if (LastPosts != null)
     {
-        <div class="last-post-list-container">
-            <CardComponent IsImageCard="true">
-                <CardImageComponent Source="@LastPost.HeaderImage"></CardImageComponent>
-                <CardContentComponent>
-                    <h3>@LastPost.Title</h3>
-                    <LabelComponent>
-                        <IconComponent Id="fal fa-calendar-alt"></IconComponent>
-                        <CaptionComponent>
-                            @LastPost.CreationDate.ToShortDateString()
-                        </CaptionComponent>
-                    </LabelComponent>
-                </CardContentComponent>
-            </CardComponent>
-        </div>
+        foreach (var LastPost in LastPosts)
+        {
+            <div class="last-post-item" @onclick="()=>LoadPost(LastPost.PostId)">
+                <CardComponent IsImageCard="true">
+                    <CardImageComponent Source="@LastPost.HeaderImage"></CardImageComponent>
+                    <CardContentComponent>
+                        <h3>@LastPost.Title</h3>
+                        <LabelComponent>
+                            <IconComponent Id="fal fa-calendar-alt"></IconComponent>
+                            <CaptionComponent>
+                                @LastPost.CreationDate.ToShortDateString()
+                            </CaptionComponent>
+                        </LabelComponent>
+                    </CardContentComponent>
+                </CardComponent>
+            </div>
+        }
     }
-}
+</div>

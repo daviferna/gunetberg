@@ -1,7 +1,67 @@
-﻿.lateral-bar-component{
-    display:flex;
-    flex-direction:column;
-    justify-content: start;
-    align-items: stretch;
+﻿.lateral-bar-component {
+    position: relative;
+
+    .lateral-bar-opacity-mask {
+        display: none;
+    }
+
+    .lateral-bar-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: stretch;
+    }
+
+    .close-lateral-bar {
+        display: none;
+    }
 }
 
+@media( max-width:750px) {
+    .lateral-bar-component {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .lateral-bar-open {
+
+        .close-lateral-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: stretch;
+            padding: 0 0 30px 0;
+            flex: 0 0 auto;
+        }
+
+        .lateral-bar-opacity-mask {
+            display: initial;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #000;
+            opacity: .5;
+            z-index: 800;
+        }
+
+        .lateral-bar-content {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background: var(--background);
+            z-index: 900;
+            padding: 20px;
+            overflow:auto;
+            min-width:250px;
+        }
+    }
+
+    .lateral-bar-close{
+        display:none;
+    }
+}

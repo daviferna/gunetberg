@@ -5,7 +5,7 @@
 
 @namespace Gunetberg.Web.Layouts
 
-
+<div class="main-layout-component @(_lateralBarProvider.IsOpen? "main-layout-component-blocked": "")">
     <div class="loading-window primary loading-window-animation">
         <img src="media/logo.svg" class="loading-logo" />
     </div>
@@ -20,3 +20,5 @@
             </div>
         </div>
     </div>
+</div>
+

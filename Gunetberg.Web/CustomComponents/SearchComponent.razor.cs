@@ -14,6 +14,9 @@ namespace Gunetberg.Web.CustomComponents
     public partial class SearchComponent : ComponentBase
     {
         [Inject]
+        private LateralBarProvider _lateralBarProvider { get; set; }
+
+        [Inject]
         private NavigationManager _navigationManager { get; set; }
 
         [Inject]
@@ -28,6 +31,7 @@ namespace Gunetberg.Web.CustomComponents
         public ICollection<AutocompletePostDto> AutocompletePosts { get; set; }
 
         private string _searchField;
+        
         public string SearchField
         {
             get => _searchField;
@@ -38,8 +42,8 @@ namespace Gunetberg.Web.CustomComponents
             }
         }
 
-
         private CancellationTokenSource _cancellationToken;
+
         private async void LoadAutocompletePosts(string title)
         {
             if (_cancellationToken != null)
@@ -92,6 +96,7 @@ namespace Gunetberg.Web.CustomComponents
         public void LoadPost(long postId)
         {
             ClearSearchField();
+            _lateralBarProvider.Close();
             _navigationManager.NavigateTo($"post/{postId}");
         }
 

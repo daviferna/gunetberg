@@ -16,14 +16,22 @@
 
 body {
   margin: 0;
-  background: #EFEFEF;
+  background: var(--background);
   font-family: 'Lora', serif;
-  font-size: 16px; }
+  font-size: 16px;
+  color: var(--on-background); }
 
 .main-layout-container {
   display: flex;
   flex-direction: column;
-  align-items: stretch; }
+  align-items: stretch;
+  padding: 0px 20px; }
+
+.main-layout-component {
+  height: 100vh; }
+
+.main-layout-component-blocked {
+  overflow: hidden; }
 
 .main-layout-stretch-container {
   flex: 1;
@@ -89,3 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 .error-reverse {
   background: var(--on-error);
   color: var(--error); }
+
+@media (max-width: 750px) {
+  .main-layout-center-container {
+    grid-template-columns: 4fr; } }

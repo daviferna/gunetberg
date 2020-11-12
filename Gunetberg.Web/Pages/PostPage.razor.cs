@@ -28,5 +28,11 @@ namespace Gunetberg.Web.Pages
         }
 
 
+        protected override async Task OnParametersSetAsync()
+        {
+            Post = await _postService.GetPost(PostId);
+        }
+
+
     }
 }

@@ -6,21 +6,21 @@
 
     @if (!string.IsNullOrWhiteSpace(SearchField))
     {
-        <ButtonComponent OnClick="ClearSearchField" Icon="true"><IconComponent Id="fal fa-times"></IconComponent></ButtonComponent>
+        <ButtonComponent OnClick="ClearSearchField" Icon="true"><IconComponent Id="fal fa-times fa-fw"></IconComponent></ButtonComponent>
 
         <div class="search-component-autocomplete">
             @if (AutocompletePosts != null)
             {
                 @if (AutocompletePosts.Any())
                 {
-                    <ul>
-                        @foreach (var AutocompletePost in AutocompletePosts)
-                        {
-                            <li @onclick="(() => LoadPost(AutocompletePost.PostId))">
-                                @HighlightTitle(AutocompletePost.Title)
-                            </li>
-                        }
-                    </ul>
+            <ul>
+                @foreach (var AutocompletePost in AutocompletePosts)
+                {
+                    <li @onclick="(() => LoadPost(AutocompletePost.PostId))">
+                        @HighlightTitle(AutocompletePost.Title)
+                    </li>
+                }
+            </ul>
                 }
                 else
                 {
@@ -28,7 +28,7 @@
                         <CaptionComponent>Sin resultados</CaptionComponent>
                     </div>
                 }
-                <ButtonComponent Raised="true" OnClick="@GoToAdvancedSearch">Búsqueda avanzada</ButtonComponent>
+                @*<ButtonComponent Raised="true" OnClick="@GoToAdvancedSearch">Búsqueda avanzada</ButtonComponent>*@
             }
         </div>
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Gunetberg.Web.Types;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -9,159 +10,46 @@ namespace Gunetberg.Web.Providers
 {
     public class ThemeProvider
     {
-        private readonly IJSRuntime _jSRuntime;
+        private IJSRuntime _jSRuntime { get; set; }
 
         public EventHandler OnThemeChanged;
 
-        private string _primary;
-        public string Primary
-        {
-            get => _primary;
-            set
-            {
-                _primary = value;
-                UpdateTheme().Wait();;
-            }
-        }
+        private IDictionary<string, Theme> _themes;
 
-        private string _primaryVariant;
-        public string PrimaryVariant { 
-            get=>_primaryVariant;
-            set
-            {
-                _primaryVariant = value;
-                UpdateTheme().Wait();;
-            }
-        }
+        private string _currentTheme;
 
-        private string _secondary;
-        public string Secondary
-        {
-            get => _secondary;
-            set
-            {
-                _secondary = value;
-                UpdateTheme().Wait();;
-            }
-        }
+        private string _defaultTheme;
 
-        private string _secondaryVariant;
-        public string SecondaryVariant
-        {
-            get => _secondaryVariant;
-            set
-            {
-                _secondaryVariant = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _background;
-        public string Background
-        {
-            get => _background;
-            set
-            {
-                _background = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _surface;
-        public string Surface { 
-            get=>_surface;
-            set
-            {
-                _surface = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _error;
-        public string Error { 
-            get=>_error;
-            set
-            {
-                _error = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _onPrimary;
-        public string OnPrimary
-        {
-            get => _onPrimary;
-            set
-            {
-                _onPrimary = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _onSecondary;
-        public string OnSecondary
-        {
-            get => _onSecondary;
-            set
-            {
-                _onSecondary = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _onBackground;
-        public string OnBackground
-        {
-            get => _onBackground;
-            set
-            {
-                _onBackground = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _onSurface;
-        public string OnSurface
-        {
-            get => _onSurface;
-            set
-            {
-                _onSurface = value;
-                UpdateTheme().Wait();;
-            }
-        }
-
-        private string _onError;
-        public string OnError
-        {
-            get => _onError;
-            set
-            {
-                _onError = value;
-                UpdateTheme().Wait();
-            }
-        }
-
-        public ThemeProvider(IJSRuntime jSRuntime)
+        public ThemeProvider(IJSRuntime jSRuntime, ThemeConfiguration themeConfiguration)
         {
             _jSRuntime = jSRuntime;
-            _primary = "#6200EE";
-            _primaryVariant = "#3700B3";
-            _secondary = "#03DAC6";
-            _secondaryVariant = "#018786";
-            _background = "#FFFFFF";
-            _surface = "#FFFFFF";
-            _error = "#B00020";
-            _onPrimary = "#FFFFFF";
-            _onSecondary = "#FFFFFF";
-            _onBackground = "#000000";
-            _onSurface = "#DDDDDD";
-            _onError = "#FFFFFF";
+            _themes = themeConfiguration.Themes;
+            _defaultTheme = themeConfiguration.DefaultTheme;
         }
-    
-        public async Task UpdateTheme()
+
+        public string GetCurrentThemeName()
         {
-            await _jSRuntime.InvokeVoidAsync("loadTheme", this);
+            return _currentTheme;
+        }
+
+        public async Task LoadThemeAsync(string themeName)
+        {
+            var availableThemes = _themes.Keys;
+
+            if (availableThemes.Contains(themeName))
+                _currentTheme = themeName;
+            else if (availableThemes.Contains(_defaultTheme))
+                _currentTheme = _defaultTheme;
+            else
+                _currentTheme = availableThemes.First();
+
+
+            await UpdateThemeAsync();
+        }
+
+        private async Task UpdateThemeAsync()
+        {
+            await _jSRuntime.InvokeVoidAsync("loadTheme", _themes[_currentTheme]);
             OnThemeChanged?.Invoke(this, null);
         }
     }

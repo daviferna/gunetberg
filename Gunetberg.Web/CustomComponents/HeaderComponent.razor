@@ -1,7 +1,14 @@
-﻿<header class="header-component">
+﻿@using Gunetberg.Web.Components; 
+
+<header class="header-component">
     @*<progress max="100" value="@Progress"></progress>*@
-    <div class="header-logo">
+    <a class="header-logo" href="/">
         <img src="/media/logo.svg"/>
+    </a>
+    <div class="menu-button">
+        <ButtonComponent Icon="true" OnClick="_lateralBarProvider.Toggle">
+            <IconComponent Id="fal fa-bars fa-lg"></IconComponent>
+        </ButtonComponent>
     </div>
     @*<NavigationMenuComponent></NavigationMenuComponent>*@
 </header>
